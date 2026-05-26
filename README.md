@@ -18,10 +18,10 @@ graph TD
 
 ---
 
-## Game Layer
+# Layers
 
 <details>
-<summary>Expand</summary>
+<summary><strong>1. Game Layer</strong></summary>
 
 ```text
 1. Game Layer
@@ -157,6 +157,22 @@ graph TD
     ├── Audio Intensity
     └── Event Orchestration
 ```
+### Responsibilities
+
+- Race orchestration
+- Police pursuits
+- Career progression
+- Economy
+- Missions
+- World pacing
+- Dynamic events
+
+</details>
+
+---
+
+<details>
+<summary><strong>2. Simulation Layer</strong></summary>
 
 ```text
 2. Simulation Layer
@@ -202,6 +218,20 @@ graph TD
     ├── Raycasts
     └── Collision Queries
 ```
+### Responsibilities
+
+- Vehicle physics
+- AI processing
+- Streaming
+- Traffic behavior
+- Collision runtime
+
+</details>
+
+---
+
+<details>
+<summary><strong>3. Core Layer</strong></summary>
 
 ```text
 3. Core Layer
@@ -279,6 +309,21 @@ graph TD
     ├── Streaming Memory
     └── Leak Detection
 ```
+### Responsibilities
+
+- ECS
+- Scheduling
+- Replication
+- Save system
+- Memory
+- Resource management
+
+</details>
+
+---
+
+<details>
+<summary><strong>4. Presentation Layer</strong></summary>
 
 ```text
 4. Presentation Layer
@@ -342,6 +387,21 @@ graph TD
     ├── Subtitle System
     └── Input Accessibility
 ```
+### Responsibilities
+
+- Rendering
+- Cinematics
+- Audio
+- UI
+- Camera behavior
+- Visual feedback
+
+</details>
+
+---
+
+<details>
+<summary><strong>5. Platform Layer</strong></summary>
 
 ```text
 5. Platform Layer
@@ -390,6 +450,37 @@ graph TD
     ├── Telemetry Interfaces
     └── Performance Counters
 ```
+### Responsibilities
+
+- Hardware abstraction
+- DX12/Vulkan
+- Threading
+- IO
+- Networking
+- GPU communication
+
+</details>
+
+---
+# Technology Stack
+
+| Area | Technology |
+|---|---|
+| Engine | Unreal Engine 5 |
+| Language | C++ |
+| Rendering | DX12 + Vulkan |
+| Physics | Chaos Modified |
+| Audio | Wwise |
+| UI | UMG Custom |
+| Networking | EOS / PlayFab |
+| ECS | Custom Hybrid ECS |
+| Profiling | Tracy + PIX + RenderDoc |
+| Build System | Unreal Build Tool |
+| Source Control | Perforce |
+| CI/CD | Jenkins + GitHub Actions |
+
+---
+
 ```text
 
 1. Game Layer
@@ -3261,61 +3352,3 @@ graph TD
                 - profiling baixo nível
                 - monitoramento térmico
 ```
-
-
-| Sistema             | Tecnologia / Arquitetura Ideal          |
-| ------------------- | --------------------------------------- |
-| ECS Runtime         | ECS híbrido custom                      |
-| Vehicle Simulation  | C++ nativo + substepping físico         |
-| Tire Model          | Pacejka simplificado + lookup tables    |
-| Suspension          | Constraint-based suspension solver      |
-| Drift System        | Slip-angle driven + assist layer        |
-| Collision Solver    | Chaos modificado                        |
-| Damage Simulation   | Damage zones + deformation blend        |
-| Traffic Simulation  | Lane graph + spline runtime             |
-| Navigation Runtime  | Hierarchical Pathfinding (HPA*)         |
-| AI Decision System  | Utility AI + Behavior Trees híbridos    |
-| Race Director       | Utility-based orchestration system      |
-| Police Director     | Heat-state orchestration runtime        |
-| Streaming           | World Partition-like streaming          |
-| Async Loading       | DirectStorage + IO batching             |
-| Replay System       | Input recording + state snapshots       |
-| Networking          | Client prediction + rollback parcial    |
-| Replication         | Interest management replication         |
-| Telemetry           | Event-driven analytics pipeline         |
-| Event Bus           | Lock-free async event queue             |
-| Save System         | Binary chunk serialization              |
-| Config Runtime      | JSON/TOML hot reload                    |
-| Rendering           | Deferred renderer + clustered lighting  |
-| Reflection System   | SSR + probe blending                    |
-| VFX                 | GPU particles                           |
-| Audio Runtime       | Wwise                                   |
-| Music Director      | Vertical remixing + layered transitions |
-| Camera System       | Predictive camera runtime               |
-| UI/HUD              | UMG custom                              |
-| Photo Mode          | Detached cinematic camera               |
-| Task Scheduler      | Fiber job system                        |
-| Threading           | Work-stealing scheduler                 |
-| Memory Manager      | Pool allocators + frame allocators      |
-| Resource Manager    | Handle-based asset system               |
-| Asset Registry      | GUID-based registry                     |
-| Shader System       | Shader permutation cache                |
-| Platform Layer      | Modular abstraction layer               |
-| GPU API             | DX12 + Vulkan                           |
-| Input Layer         | SDL-like abstraction custom             |
-| Wheel Support       | DirectInput + vendor SDKs               |
-| Multiplayer Backend | Dedicated servers + relay fallback      |
-| Matchmaking         | Epic Online Services / PlayFab          |
-| Cloud Save          | Steam Cloud + platform APIs             |
-| Crash Analytics     | Sentry                                  |
-| Profiling           | Tracy + PIX + RenderDoc                 |
-| Engine Base         | Unreal Engine                           |
-| Linguagem Principal | C++                                     |
-| Gameplay Scripting  | C++ + Blueprints                        |
-| Physics Backend     | Chaos modificado                        |
-| Backend Services    | EOS / PlayFab                           |
-| Build System        | CMake + Unreal Build Tool               |
-| Source Control      | Perforce                                |
-| CI/CD               | Jenkins + GitHub Actions                |
-| Telemetry Backend   | OpenTelemetry                           |
-| Crash Reporting     | Sentry                                  |
