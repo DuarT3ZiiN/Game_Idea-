@@ -1,21 +1,5 @@
 # Engine Architecture
 
-## Overview
-
-```mermaid
-graph TD
-    A[Game Layer]
-    B[Simulation Layer]
-    C[Core Layer]
-    D[Presentation Layer]
-    E[Platform Layer]
-
-    A --> B
-    B --> C
-    C --> D
-    D --> E
-```
-
 ---
 
 # Layers
