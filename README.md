@@ -366,6 +366,7 @@
     ├── Telemetry Interfaces
     └── Performance Counters
 ```
+```text
 
 1. Game Layer
     Responsável por:
@@ -3235,6 +3236,7 @@
                 - métricas hardware
                 - profiling baixo nível
                 - monitoramento térmico
+```
 
 
 | Sistema             | Tecnologia / Arquitetura Ideal          |
