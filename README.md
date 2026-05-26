@@ -1,4 +1,28 @@
-# Game_Idea-
+# Engine Architecture
+
+## Overview
+
+```mermaid
+graph TD
+    A[Game Layer]
+    B[Simulation Layer]
+    C[Core Layer]
+    D[Presentation Layer]
+    E[Platform Layer]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+```
+
+---
+
+## Game Layer
+
+<details>
+<summary>Expand</summary>
+
 ```text
 1. Game Layer
 ├── Race Systems
@@ -132,9 +156,9 @@
     ├── Police Pressure
     ├── Audio Intensity
     └── Event Orchestration
+```
 
-
-
+```text
 2. Simulation Layer
 ├── Vehicle Simulation
 │   ├── Tire Model
@@ -177,9 +201,9 @@
     ├── Constraint Solver
     ├── Raycasts
     └── Collision Queries
+```
 
-
-
+```text
 3. Core Layer
 ├── ECS Runtime
 │   ├── Entities
@@ -254,9 +278,9 @@
     ├── Pool Allocators
     ├── Streaming Memory
     └── Leak Detection
+```
 
-
-
+```text
 4. Presentation Layer
 ├── Rendering
 │   ├── Lighting System
@@ -317,9 +341,9 @@
     ├── Color Accessibility
     ├── Subtitle System
     └── Input Accessibility
+```
 
-
-
+```text
 5. Platform Layer
 ├── Graphics API Layer
 │   ├── DX12 Backend
