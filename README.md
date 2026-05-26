@@ -465,115 +465,176 @@
 
 ---
 
+# 1. Game Layer
+
+> Core gameplay orchestration layer.
+
+---
+
+## Responsável por:
+
+```text
+- gameplay orchestration
+- regras do jogo
+- progressão
+- pacing
+- experiência cinematográfica
+- sistemas de corrida
+- polícia
+- economia
+- carreira
+- integração entre sistemas
+```
+
+## Não deve:
+
+```text
+- conter física bruta
+- conter renderer
+- conter lógica de hardware
+- controlar memória diretamente
+```
+
+---
+
+<details>
+<summary><strong>1.1 Race Systems</strong></summary>
+
+---
+
+## Overview
+
 ```text
 
-1. Game Layer
-    Responsável por:
-        - gameplay orchestration
-        - regras do jogo
-        - progressão
-        - pacing
-        - experiência cinematográfica
-        - sistemas de corrida
-        - polícia
-        - economia
-        - carreira
-        - integração entre sistemas
+Responsável por:
+    - gerenciamento de eventos automobilísticos
+    - regras de corrida
+    - fluxo de corrida
+    - progressão de participantes
+    - scoring
+    - integração com polícia/tráfego
+    - replay competitivo
+    - pacing competitivo
+```
 
-    NÃO deve:
-        - conter física bruta
-        - conter renderer
-        - conter lógica de hardware
-        - controlar memória diretamente
+---
 
+## Runtime Structure
 
-    1.1 Race Systems
-        Responsável por:
-            - gerenciamento de eventos automobilísticos
-            - regras de corrida
-            - fluxo de corrida
-            - progressão de participantes
-            - scoring
-            - integração com polícia/tráfego
-            - replay competitivo
-            - pacing competitivo
+```text
+Race Systems
+├── Runtime
+├── Rules
+├── Scoring
+├── AI
+└── Online
+```
 
+---
 
-        1.1.1 Runtime
-            Responsável por:
-                - execução ativa da corrida
-                - gerenciamento de sessão
-                - sincronização de estados
-                - gerenciamento de participantes
-                - pipeline de eventos
-                - authority da corrida
+### 1.1.1 Runtime
 
-            NÃO deve:
-                - calcular física
-                - controlar rendering
-                - possuir IA global
+> Controls active race execution lifecycle.
 
+#### Responsável por:
 
-            1.1.1.1 Event Runtime
-                Apenas:
-                    - inicia evento
-                    - encerra evento
-                    - registra entidades
-                    - controla lifecycle
-                    - distribui eventos
-                    - inicializa módulos necessários
-                    - conecta adapters externos
+```text
+- execução ativa da corrida
+- gerenciamento de sessão
+- sincronização de estados
+- gerenciamento de participantes
+- pipeline de eventos
+- authority da corrida
 
+```
 
-            1.1.1.2 Session Manager
-                Responsável por:
-                    - criar sessão
-                    - destruir sessão
-                    - registrar racers
-                    - validar estados
-                    - controlar reconexões
-                    - coordenar sincronização online
+#### NÃO deve:
 
+```text
+- calcular física
+- controlar rendering
+- possuir IA global
+```
 
-            1.1.1.3 Race Flow
-                Responsável por:
-                    - intro cinematics
-                    - countdown
-                    - transição gameplay/free roam
-                    - finish state
-                    - pós-corrida
-                    - reward dispatch
+### 1.1.1.1 Event Runtime
 
-                Fluxo:
-                    Load Event
-                    ↓
-                    Spawn Participants
-                    ↓
-                    Intro Sequence
-                    ↓
-                    Countdown
-                    ↓
-                    Gameplay
-                    ↓
-                    Finish
-                    ↓
-                    Rewards
-                    ↓
-                    Return To World
+#### Apenas:
 
+```text
+- inicia evento
+- encerra evento
+- registra entidades
+- controla lifecycle
+- distribui eventos
+- inicializa módulos necessários
+- conecta adapters externos
 
-            1.1.1.4 Participant Manager
-                Responsável por:
+```
+
+### 1.1.1.2 Session Manager
+
+#### por:
+
+```text
+- criar sessão
+- destruir sessão
+- registrar racers
+- validar estados
+- controlar reconexões
+- coordenar sincronização online
+
+```
+
+### 1.1.1.3 Race Flow
+
+#### Responsável por:
+
+```text
+- intro cinematics
+- countdown
+- transição gameplay/free roam
+- finish state
+- pós-corrida
+- reward dispatch
+```
+
+```text
+Fluxo:
+Load Event
+↓
+Spawn Participants
+↓
+Intro Sequence
+↓
+Countdown
+↓
+Gameplay
+↓
+Finish
+↓
+Rewards
+↓
+Return To World
+```
+
+### 1.1.1.4 Participant Manager
+
+#### Responsável por:
+
+```text
                     - registro de corredores
                     - estado dos racers
                     - DNF
                     - disconnects
                     - ranking parcial
                     - telemetria individual
+```
 
+### 1.1.1.5 State Machine
 
-            1.1.1.5 State Machine
-                Estados:
+#### Estados:
+
+```text
                     - PRELOAD
                     - INTRO
                     - COUNTDOWN
@@ -581,105 +642,148 @@
                     - FINAL_LAP
                     - FINISHED
                     - ABORTED
+```
 
-                NÃO permitir:
+#### NÃO permitir:
+
+```text
                     - estados inválidos
                     - transições ilegais
                     - race conditions
+```
 
+### 1.1.1.6 Event Pipeline
 
-            1.1.1.6 Event Pipeline
-                Responsável por:
+#### Responsável por:
+
+```text
                     - propagação de eventos
                     - hooks
                     - callbacks
                     - replay markers
                     - telemetry hooks
                     - online replication hooks
+```
 
-                Eventos:
+#### Eventos:
+
+```text
                     - OnRaceStart
                     - OnCheckpointReached
                     - OnPlayerCrash
                     - OnPoliceJoined
                     - OnFinalLap
                     - OnRaceFinished
+```
 
+---
 
+### 1.1.2 Rules
 
-        1.1.2 Rules
-            Responsável por:
+#### Responsável por:
+
+```text
                 - definir comportamento de cada modo
                 - validar regras
                 - scoring base
                 - restrições de gameplay
+```
 
-            NÃO deve:
+#### NÃO deve:
+
+```text
                 - controlar IA diretamente
                 - manipular câmera
                 - alterar física diretamente
+```
 
+### 1.1.2.1 Sprint Rules
 
-            1.1.2.1 Sprint Rules
-                Responsável por:
+#### Responsável por:
+
+```text
                     - progress tracking
                     - checkpoint validation
                     - police enabled
                     - traffic enabled
                     - shortcut validation
+```
 
-                Características:
+#### Características:
+
+```text
                     - sem voltas
                     - progressão linear
                     - alta velocidade
                     - pressão constante
+```
 
+### 1.1.2.2 Circuit Rules
 
-            1.1.2.2 Circuit Rules
-                Responsável por:
+#### Responsável por:
+
+```text
                     - laps
                     - ranking
                     - split times
                     - lap validation
                     - final lap triggers
+```
 
-                Características:
+#### Características:
+
+```text
                     - pacing progressivo
                     - consistência
                     - estratégia
+```
 
+### 1.1.2.3 Drift Rules
 
-            1.1.2.3 Drift Rules
-                NÃO mede:
-                    - posição
+#### NÃO mede:
 
-                Mede:
+```text
+                - posição
+```
+
+#### Mede:
+
+```text
                     - ângulo
                     - velocidade lateral
                     - continuidade
-                    - transições
-                    - proximidade
                     - combos
-                    - near misses
+```
 
-                Responsável por:
+#### Responsável por:
+
+```text
                     - combo runtime
                     - drift chaining
                     - multiplier logic
                     - reset conditions
+```
 
-                Drift bom:
+#### Drift bom:
+
+```text
                     - parece técnico
                     - permanece controlável
                     - favorece flow
+```
 
+### 1.1.2.4 Drag Rules
 
-            1.1.2.4 Drag Rules
-                Base:
+#### Base:
+
+```text
                     - inspirado em
-                      :contentReference[oaicite:0]{index=0}
+                      -PRO STREET
+```
 
-                Responsável por:
+#### Responsável por:
+
+```text
                     - launch timing
                     - burnout state
                     - lane assist
@@ -687,115 +791,139 @@
                     - wheelspin
                     - trap speed
                     - nitro timing
+```
 
-                Precisa:
+#### Precisa:
+
+```text
                     - sensação brutal de potência
                     - feedback visual forte
                     - câmera agressiva
                     - timing extremamente preciso
+```
 
-                Estados:
+#### Estagios:
+
+```text
                     - Burnout
                     - Stage
                     - Launch
                     - Shift
                     - Finish
+```
 
+### 1.1.2.5 Canyon Rules
 
-            1.1.2.5 Canyon Rules
-                Responsável por:
+#### Responsável por:
+
+```text
                     - duel scoring
                     - gap tracking
                     - edge danger
                     - pressure system
                     - overtake punishments
+```
 
-                Características:
+#### Características:
+
+```text
                     - estradas estreitas
                     - IA agressiva
                     - alto risco
                     - pacing psicológico
+```
 
+### 1.1.2.6 Time Attack Rules
 
-            1.1.2.6 Time Attack Rules
-                Responsável por:
+#### Responsável por:
+
+```text
                     - timer runtime
                     - split sectors
                     - ghost tracking
                     - record validation
+```
 
-                Características:
+#### Características:
+
+```text
                     - precisão
                     - otimização de rota
                     - baixa tolerância a erro
+```
 
+### 1.1.2.7 Tollbooth Rules
 
-            1.1.2.7 Tollbooth Rules
-                Responsável por:
+#### Responsável por:
+
+```text
                     - countdown timer
                     - checkpoint extensions
                     - pacing escalation
                     - speed pressure
+```
 
-                Características:
+#### Características:
+
+```text
                     - pressão constante
                     - ritmo acelerado
                     - progressão agressiva
+```
 
+---
 
+### 1.1.3 Scoring
 
-        1.1.3 Scoring
-            Responsável por:
+#### Responsável por:
+
+```text
                 - pontuação
                 - rankings
                 - multipliers
                 - performance metrics
+```
 
+### 1.1.3.1 Position Scoring
 
-            1.1.3.1 Position Scoring
-                Mede:
+#### Mede:
+
+```text
                     - posição final
                     - ultrapassagens
                     - consistência
+```
 
+### 1.1.3.2 Drift Scoring
 
-            1.1.3.2 Drift Scoring
-                Mede:
+#### Mede:
+
+```text
                     - ângulo
                     - velocidade
                     - combo
                     - continuidade
+```
 
+---
 
-            1.1.3.3 Style Scoring
-                Mede:
-                    - near miss
-                    - air time
-                    - aggressive driving
-                    - clean racing
+### 1.1.4 AI
 
+#### Responsável por:
 
-            1.1.3.4 Combo System
-                Responsável por:
-                    - chaining
-                    - decay
-                    - multipliers
-                    - risk/reward
-
-
-
-        1.1.4 AI
-            Responsável por:
+```text
                 - comportamento competitivo
                 - pacing
                 - pressão psicológica
                 - espetáculo cinematográfico
+```
 
+### 1.1.4.1 Race Director
+>Esse é o “cérebro cinematográfico”.
 
-            1.1.4.1 Race Director
-                Esse é o “cérebro cinematográfico”.
+#### Controla:
 
-                Controla:
+```text
                     - pacing
                     - tension
                     - AI aggression
@@ -803,161 +931,232 @@
                     - traffic density
                     - soundtrack intensity
                     - cinematic moments
+```
 
-                NÃO deve:
+#### NÃO deve:
+
+```text
                     - dirigir carros diretamente
                     - controlar física
+```
 
+### 1.1.4.2 Rubber Banding
 
-            1.1.4.2 Rubber Banding
-                NÃO fazer:
+#### NÃO fazer:
+
+```text
                     - boost absurdo de velocidade
+```
 
-                Fazer:
+#### Fazer:
+
+```text
                     - ajuste de agressividade
                     - ajuste de erros da IA
                     - controle de pressão
                     - recuperação cinematográfica
+```
 
+### 1.1.4.3 Rival Behaviors
 
-            1.1.4.3 Rival Behaviors
-                Responsável por:
+#### Responsável por:
+
+```text
                     - rivalidade dinâmica
                     - targeting
                     - vingança
                     - intimidação
                     - defesa de posição
+```
 
+### 1.1.4.4 Tactical Driving
 
-            1.1.4.4 Tactical Driving
-                Responsável por:
+#### Responsável por:
+
+```text
                     - bloqueios
                     - draft
                     - cutoff
                     - defesa
                     - pressão lateral
+```
 
+### 1.1.4.5 Aggression Profiles
 
-            1.1.4.5 Aggression Profiles
-                Perfis:
+#### Perfis:
+
+```text
                     - Defensive
                     - Aggressive
                     - Technical
                     - Unstable
                     - Tactical
                     - Reckless
+```
 
 
+### 1.1.5 Crew Systems
 
-        1.1.5 Crew Systems
-            Responsável por:
+#### Responsável por:
+
+```text
                 - coordenação em equipe
                 - personalidade das crews
                 - suporte tático
                 - narrativa emergente
+```
 
+### 1.1.5.1 Tactical Roles
 
-            1.1.5.1 Tactical Roles
-                Papéis:
+#### Papéis:
+
+```text
                     - Blocker
                     - Drafter
                     - Scout
                     - Aggressor
+```
 
+### 1.1.5.2 Team Coordination
 
-            1.1.5.2 Team Coordination
-                Responsável por:
+#### Responsável por:
+
+```text
                     - coordenação contextual
                     - decisões cooperativas
                     - troca dinâmica de funções
+```
 
+### 1.1.5.3 Communication
 
-            1.1.5.3 Communication
-                Responsável por:
+#### Responsável por:
+
+```text
                     - rádio
                     - callouts
                     - alertas
                     - informações de tráfego/polícia
+```
 
+### 1.1.5.4 Assist Logic
 
-            1.1.5.4 Assist Logic
-                Responsável por:
+#### Responsável por:
+
+```text
                     - abrir caminho
                     - proteger líder
                     - criar draft
                     - interromper rivais
+```
 
+### 1.1.5.5 Rival Crews
 
-            1.1.5.5 Rival Crews
-                Responsável por:
+#### Responsável por:
+
+```text
                     - identidade de crews
                     - reputação
                     - rivalidades persistentes
+```
 
+### 1.1.5.6 Personality Profiles
 
-            1.1.5.6 Personality Profiles
-                Mede:
+#### Mede:
+
+```text
+
                     - agressividade
                     - coragem
                     - disciplina
                     - risco
                     - cooperação
-                            1.1.6 Spawn Systems
-            Responsável por:
+```
+
+---
+
+
+### 1.1.6 Spawn Systems
+
+#### Responsável por:
+
+```text
                 - posicionamento inicial
                 - recuperação segura
                 - validação espacial
                 - controle de spawning dinâmico
                 - prevenção de colisões de spawn
+```
 
+### 1.1.6.1 Grid Spawn
 
-            1.1.6.1 Grid Spawn
-                Responsável por:
+#### Responsável por:
+
+```text
                     - alinhamento inicial
                     - spacing entre veículos
                     - ordem de largada
                     - validação de pista
+```
 
-                Precisa:
+#### Precisa:
+
+```text
                     - evitar clipping
                     - evitar overlap
                     - respeitar largura da pista
+```
 
+### 1.1.6.2 Recovery Spawn
 
-            1.1.6.2 Recovery Spawn
-                Responsável por:
+#### Responsável por:
+
+```text
                     - detectar stuck state
                     - detectar capotamento
                     - reposicionar jogador
                     - validar segurança do respawn
+```
 
-                NÃO deve:
+#### NÃO deve:
+
+```text
                     - permitir exploits
                     - quebrar flow da corrida
+```
 
+### 1.1.6.3 Dynamic Spawn
 
-            1.1.6.3 Dynamic Spawn
-                Responsável por:
+#### Responsável por:
+
+```text
                     - spawn dinâmico de IA
                     - entradas cinematográficas
                     - reforços policiais
                     - racers de evento
+```
 
-                Precisa:
+#### Precisa:
+
+```text
                     - ocorrer fora do campo de visão
                     - respeitar streaming
                     - respeitar tráfego
+```
 
+### 1.1.6.4 Streaming Validation
 
-            1.1.6.4 Streaming Validation
-                Responsável por:
+#### Responsável por:
+
+```text
                     - validar região carregada
                     - impedir spawn em unloaded areas
                     - validar memória disponível
+```
+
+---
 
 
-
-        1.1.7 Checkpoint Systems
+### 1.1.7 Checkpoint Systems
             Responsável por:
                 - progressão
                 - validação de rota
@@ -1764,7 +1963,7 @@
                 - lockdown policial
                 - entrada de rival crew
 
-2. Simulation Layer
+1. Simulation Layer
     Responsável por:
         - simulação física
         - comportamento matemático
