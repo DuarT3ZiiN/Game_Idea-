@@ -1157,207 +1157,302 @@ Return To World
 
 
 ### 1.1.7 Checkpoint Systems
-            Responsável por:
+
+#### Responsável por:
+
+```text
+
                 - progressão
                 - validação de rota
                 - detecção de exploits
                 - controle de atalhos
+```
 
+### 1.1.7.1 Spline Progression
 
-            1.1.7.1 Spline Progression
-                Mede:
+#### Mede:
+
+```text
                     - distância real na pista
                     - direção válida
                     - avanço legítimo
+```
 
-                NÃO usar:
+#### NÃO usar:
+
+```text
                     - apenas checkpoint count
+```
 
+### 1.1.7.2 Checkpoint Validation
 
-            1.1.7.2 Checkpoint Validation
-                Responsável por:
+#### Responsável por:
+
+```text
                     - validação sequencial
                     - checkpoint ordering
                     - fail states
                     - anti-skip
+```
 
+### 1.1.7.3 Shortcut Validation
 
-            1.1.7.3 Shortcut Validation
-                Responsável por:
+#### Responsável por:
+
+```text
                     - permitir atalhos legítimos
                     - bloquear exploits
                     - validar áreas opcionais
+```
 
+### 1.1.7.4 Anti-Cheat Logic
 
-            1.1.7.4 Anti-Cheat Logic
-                Detecta:
+#### Detecta:
+
+```text
                     - teleporte
                     - reversão ilegal
                     - skip de progresso
                     - velocidade impossível
+```
+
+---
 
 
+### 1.1.8 Integrations
 
-        1.1.8 Integrations
-            Responsável por:
+#### Responsável por:
+
+```text
                 - desacoplamento entre sistemas
                 - comunicação indireta
                 - adapters de runtime
+```
 
+### 1.1.8.1 Traffic Adapter
 
-            1.1.8.1 Traffic Adapter
-                Responsável por:
+#### Responsável por:
+
+```text
                     - sincronizar corrida/tráfego
                     - controlar densidade
                     - evitar caos excessivo
+```
 
+### 1.1.8.2 Police Adapter
 
-            1.1.8.2 Police Adapter
-                Responsável por:
+#### Responsável por:
+
+```text
                     - solicitar perseguições
                     - solicitar roadblocks
                     - injetar pressão policial
                     - sincronizar heat
+```
 
+### 1.1.8.3 Economy Adapter
 
-            1.1.8.3 Economy Adapter
-                Responsável por:
+#### Responsável por:
+
+```text
                     - payout
                     - apostas
                     - reward scaling
                     - multas/danos
+```
 
+### 1.1.8.4 Mission Adapter
 
-            1.1.8.4 Mission Adapter
-                Responsável por:
+#### Responsável por:
+
+```text
                     - objetivos especiais
                     - eventos dinâmicos
                     - missões híbridas
+```
+
+---
 
 
+### 1.1.9 Rewards
 
-        1.1.9 Rewards
-            Responsável por:
+#### Responsável por:
+
+```text
                 - progressão financeira
                 - reputação
                 - desbloqueios
                 - scaling de recompensa
+```
 
+### 1.1.9.1 Cash Rewards
 
-            1.1.9.1 Cash Rewards
-                Baseado em:
+#### Baseado em:
+
+```text
                     - posição
                     - dificuldade
                     - heat
                     - clean racing
                     - style
+```
 
+### 1.1.9.2 Reputation Rewards
 
-            1.1.9.2 Reputation Rewards
-                Mede:
+#### Mede:
+
+```text
                     - notoriedade
                     - estilo
                     - domínio territorial
                     - vitórias importantes
+```
 
+### 1.1.9.3 Crew Reputation
 
-            1.1.9.3 Crew Reputation
-                Responsável por:
+#### Responsável por:
+
+```text
                     - reputação coletiva
                     - influência da crew
                     - rivalidades
+```
 
+### 1.1.9.4 Unlock System
 
-            1.1.9.4 Unlock System
-                Responsável por:
+#### Responsável por:
+
+```text
                     - carros
                     - peças
                     - eventos
                     - sponsors
                     - áreas da cidade
+```
 
+---
 
+### 1.1.10 Telemetry
 
-        1.1.10 Telemetry
-            Responsável por:
+#### Responsável por:
+
+```text
                 - analytics
                 - balancing
                 - tuning de IA
                 - métricas de gameplay
+```
 
+### 1.1.10.1 Heatmaps
 
-            1.1.10.1 Heatmaps
-                Mede:
+#### Mede:
+
+```text
                     - crashes
                     - atalhos
                     - zonas difíceis
                     - tráfego problemático
+```
 
+### 1.1.10.2 Difficulty Metrics
 
-            1.1.10.2 Difficulty Metrics
-                Mede:
+#### Mede:
+
+```text
                     - win rate
                     - retry rate
                     - abandono
                     - dificuldade percebida
+```
 
+### 1.1.10.3 Crash Analytics
 
-            1.1.10.3 Crash Analytics
-                Mede:
+#### Mede:
+
+```text
                     - frequência
                     - intensidade
                     - causas
                     - zonas críticas
+```
 
+### 1.1.10.4 AI Performance
 
-            1.1.10.4 AI Performance
-                Mede:
+#### Mede:
+
+```text
                     - eficiência
                     - agressividade
                     - ultrapassagens
                     - rubber banding effectiveness
+```
 
+---
 
+### 1.1.11 Online
 
-        1.1.11 Online
-            Responsável por:
+#### Responsável por:
+
+```text
                 - sincronização online
                 - sessões multiplayer
                 - replicação
                 - ghosts
                 - matchmaking runtime
+```
 
+### 1.1.11.1 Synchronization
 
-            1.1.11.1 Synchronization
-                Responsável por:
+#### Responsável por:
+
+```text
                     - sincronização de estado
                     - latency compensation
                     - prediction
                     - reconciliation
+```
 
+### 1.1.11.2 Ghost System
 
-            1.1.11.2 Ghost System
-                Responsável por:
+#### Responsável por:
+
+```text
                     - replay competitivo
                     - time attack ghosts
                     - records assíncronos
+```
 
+### 1.1.11.3 Match Runtime
 
-            1.1.11.3 Match Runtime
-                Responsável por:
+#### Responsável por:
+
+```text
                     - lifecycle multiplayer
                     - lobby states
                     - matchmaking flow
+```
 
+### 1.1.11.4 Replication
 
-            1.1.11.4 Replication
-                Responsável por:
+#### Responsável por:
+
+```text
                     - replicação de veículos
                     - replicação de polícia
                     - replicação de eventos
                     - state authority
+```
 
-    1.2 Police Systems
+---
+
+<details>
+<summary><strong>1.2 Police Systems</strong></summary>
+
+---
+
+## Overview
+
+```text
         Responsável por:
             - perseguições
             - escalada de tensão
@@ -1374,152 +1469,248 @@ Return To World
             - criar perseguições cinematográficas
             - manter pressão constante
             - gerar momentos memoráveis
+```
 
+---
 
-        1.2.1 Director
-            Esse é o cérebro estratégico da polícia.
+### 1.2.1 Director
 
-            Responsável por:
+>Esse é o cérebro estratégico da polícia.
+
+#### Responsável por:
+
+```text
                 - intensidade da perseguição
                 - controle de pressão
                 - escalada de unidades
                 - coordenação global
                 - pacing da perseguição
+```
 
-            Controla:
+#### Controla:
+
+```text
                 - quantidade de unidades
                 - agressividade
                 - frequência de roadblocks
                 - helicópteros
                 - cooldowns
+```
 
+---
 
-        1.2.2 Pursuit Runtime
-            Responsável por:
+### 1.2.2 Pursuit Runtime
+
+#### Responsável por:
+
+```text
                 - sessão ativa de perseguição
                 - lifecycle da pursuit
                 - estado do jogador
                 - timers
                 - coordenação operacional
+```
 
-            Estados:
+#### Estados:
+
+```text
                 - DETECTED
                 - PURSUIT
                 - ESCALATED
                 - SEARCH
                 - COOLDOWN
                 - ESCAPED
+```
 
-            NÃO deve:
+#### NÃO deve:
+
+```text
                 - controlar spawning diretamente
                 - controlar IA individual
+```
 
+---
 
-        1.2.3 Tactical AI
-            Responsável por:
+### 1.2.3 Tactical AI
+
+#### Responsável por:
+
+```text
                 - bloqueios
                 - PIT maneuvers
                 - interceptação
                 - pressão lateral
                 - coordenação entre viaturas
+```
 
-            IA deve:
+#### IA deve:
+
+```text
                 - trapacear discretamente
                 - priorizar diversão
                 - parecer inteligente
+```
 
-            NÃO deve:
+#### NÃO deve:
+
+```text
                 - seguir física perfeita
                 - depender de pathfinding puro
+```
+
+---
 
 
-        1.2.4 Heat System
-            Responsável por:
+### 1.2.4 Heat System
+
+#### Responsável por:
+
+```text
                 - notoriedade
                 - agressividade policial
                 - escala operacional
+```
 
-            Mede:
+#### Mede:
+
+```text
                 - infrações
                 - duração da perseguição
                 - destruição
                 - velocidade
                 - evasões anteriores
+```
 
-            Heat influencia:
+#### Heat influencia:
+
+```text
                 - tipos de viatura
                 - IA
                 - frequência de backup
                 - táticas
+```
+
+---
 
 
-        1.2.5 Spawn System
-            Responsável por:
+### 1.2.5 Spawn System
+
+#### Responsável por:
+
+```text
                 - spawn policial
                 - entradas dinâmicas
                 - reforços
+```
 
-            Spawn deve:
+#### Spawn deve:
+
+```text
                 - ocorrer fora de visão
                 - respeitar streaming
                 - respeitar pacing
+```
 
-            NÃO deve:
+#### NÃO deve:
+
+```text
                 - spawnar em frente ao jogador
                 - quebrar imersão
+```
+
+---
 
 
-        1.2.6 Search System
-            Responsável por:
+### 1.2.6 Search System
+
+#### Responsável por:
+
+```text
                 - busca do jogador
                 - zonas de procura
                 - última posição conhecida
                 - cooldown de perseguição
+```
 
-            Sistema deve:
+#### Sistema deve:
+
+```text
                 - criar tensão
                 - permitir escape dramático
                 - evitar onisciência policial
+```
+
+---
 
 
-        1.2.7 Roadblock System
-            Responsável por:
+### 1.2.7 Roadblock System
+
+#### Responsável por:
+
+```text
                 - roadblocks
                 - spike strips
                 - barreiras móveis
+```
 
-            Roadblocks devem:
+#### Roadblocks devem:
+
+```text
                 - parecer coordenados
                 - aumentar pressão
                 - variar localização
+```
 
-            NÃO devem:
+#### NÃO devem:
+
+```text
                 - ser impossíveis
                 - parecer injustos
+```
+
+---
 
 
-        1.2.8 Helicopter System
-            Responsável por:
+### 1.2.8 Helicopter System
+
+#### Responsável por:
+
+```text
                 - suporte aéreo
                 - iluminação
                 - tracking psicológico
+```
 
-            Helicóptero NÃO precisa:
+#### Helicóptero NÃO precisa:
+
+```text
                 - física realista
                 - simulação aeronáutica
+```
 
-            Objetivo:
+#### Objetivo:
+
+```text
                 - pressão psicológica
                 - sensação cinematográfica
+```
+
+---
 
 
-        1.2.9 Escalation System
-            Responsável por:
+### 1.2.9 Escalation System
+
+#### Responsável por:
+
+```text
                 - progressão de dificuldade
                 - mudança de unidades
                 - resposta crescente
+```
 
-            Escala:
+#### Escala:
+
+```text
                 Patrol
                 ↓
                 Interceptors
@@ -1529,172 +1720,290 @@ Return To World
                 Heavy Units
                 ↓
                 Federal Response
+```
+
+---
 
 
-        1.2.10 Radio System
-            Responsável por:
+### 1.2.10 Radio System
+
+#### Responsável por:
+
+```text
                 - chatter policial
                 - coordenação
                 - informação contextual
+```
 
-            Rádio deve:
+#### Rádio deve:
+
+```text
                 - aumentar imersão
                 - comunicar escalada
                 - informar ações policiais
+```
 
+---
 
-        1.2.11 Vehicle Enforcement
-            Responsável por:
+### 1.2.11 Vehicle Enforcement
+
+#### Responsável por:
+
+```text
                 - dano policial
                 - pressão física
                 - impacto operacional
+```
 
-            Mede:
+#### Mede:
+
+```text
                 - dano acumulado
                 - colisões
                 - eficiência de PIT
+```
 
+---
 
-        1.2.12 Jurisdiction System
-            Responsável por:
+### 1.2.12 Jurisdiction System
+
+#### Responsável por:
+
+```text
                 - divisão territorial
                 - níveis de resposta
                 - comportamento regional
+```
 
-            Regiões podem alterar:
+#### Regiões podem alterar:
+
+```text
                 - agressividade
                 - frequência policial
                 - tipos de unidade
+```
 
+---
 
-        1.2.13 World Response
-            Responsável por:
+### 1.2.13 World Response
+
+#### Responsável por:
+
+```text
                 - resposta dinâmica da cidade
                 - reação do tráfego
                 - alteração ambiental
+```
 
-            Pode controlar:
+#### Pode controlar:
+
+```text
                 - fechamento de vias
                 - trânsito alterado
                 - eventos emergentes
                 - suporte policial indireto
+```
 
+---
+<details>
+<summary><strong>1.3 Carrer Systems</strong></summary>
 
+---
 
-    1.3 Career Systems
+## Overview
+
+```text
         Responsável por:
             - progressão do jogador
             - narrativa estrutural
             - reputação
             - desbloqueios
             - rivalidades
+```
 
+---
 
-        1.3.1 Blacklist
-            Inspirado em:
-                :contentReference[oaicite:0]{index=0}
+### 1.3.1 Blacklist
 
-            Responsável por:
+>Inspirado em:Blacklist do most wanted
+
+#### Responsável por:
+
+```text
                 - rivais principais
                 - progressão hierárquica
                 - bosses
                 - milestones
+```
 
+---
 
-        1.3.2 Crew Progression
-            Responsável por:
+### 1.3.2 Crew Progression
+
+#### Responsável por:
+
+```text
                 - evolução da crew
                 - desbloqueios coletivos
                 - influência territorial
+```
 
+---
 
-        1.3.3 Reputation
-            Mede:
+### 1.3.3 Reputation
+
+#### Mede:
+
+```text
                 - estilo
                 - notoriedade
                 - domínio
                 - agressividade
                 - fama
+```
 
+---
 
-        1.3.4 Story Events
-            Responsável por:
+### 1.3.4 Story Events
+
+#### Responsável por:
+
+```text
                 - narrativa
                 - eventos cinematográficos
                 - rivalidades
                 - introduções
+```
 
+---
 
-        1.3.5 Unlock Progression
-            Controla:
+### 1.3.5 Unlock Progression
+
+#### Controla:
+
+```text
                 - carros
                 - peças
                 - eventos
                 - sponsors
                 - áreas
+```
 
+---
 
-        1.3.6 Event Availability
-            Responsável por:
+### 1.3.6 Event Availability
+
+#### Responsável por:
+
+```text
                 - rotação de eventos
                 - gating de progressão
                 - dificuldade regional
+```
 
+---
 
+<details>
+<summary><strong>1.4 Economy Systems</strong></summary>
 
-    1.4 Economy Systems
+---
+
+## Overview
+
+```text
         Responsável por:
             - economia global
             - progressão financeira
             - scaling
             - risco/recompensa
+```
+
+---
 
 
-        1.4.1 Currency
-            Controla:
+### 1.4.1 Currency
+
+#### Controla:
+
+```text
                 - dinheiro
                 - ganhos
                 - perdas
                 - multas
+```
 
+---
 
-        1.4.2 Reward Scaling
-            Ajusta:
+### 1.4.2 Reward Scaling
+
+#### Ajusta:
+
+```text
                 - payout
                 - dificuldade
                 - heat
                 - risco
+```
 
+---
 
-        1.4.3 Car Pricing
-            Responsável por:
+### 1.4.3 Car Pricing
+
+#### Responsável por:
+
+```text
                 - valor de veículos
                 - raridade
                 - mercado
+```
 
+---
 
-        1.4.4 Upgrade Pricing
-            Responsável por:
+### 1.4.4 Upgrade Pricing
+
+#### Responsável por:
+
+```text
                 - tuning economy
                 - balancing
                 - progressão técnica
+```
 
+---
 
-        1.4.5 Sponsorships
-            Responsável por:
+### 1.4.5 Sponsorships
+
+#### Responsável por:
+
+```text
                 - contratos
                 - desafios
                 - bônus especiais
+```
 
+---
 
-        1.4.6 Risk/Reward Logic
-            Mede:
+### 1.4.6 Risk/Reward Logic
+
+#### Mede:
+
+```text
                 - heat alto
                 - perseguições
                 - apostas
                 - eventos perigosos
+```
 
-    1.5 Mission Systems
+---
+
+<details>
+<summary><strong>1.5 Mission Systems</strong></summary>
+
+---
+
+## Overview
+
+```text
         Responsável por:
             - objetivos
             - scripting de eventos
@@ -1706,181 +2015,294 @@ Return To World
             - controlar física
             - controlar rendering
             - possuir lógica hardcoded de corrida
+```
+
+---
 
 
-        1.5.1 Objective Runtime
-            Responsável por:
+
+### 1.5.1 Objective Runtime
+
+#### Responsável por:
+
+```text
                 - objetivos ativos
                 - validação de missão
                 - fail states
                 - progressão dinâmica
+```
 
-            Tipos:
+#### Tipos:
+
+```text
                 - Reach Target
                 - Escape Police
                 - Win Race
                 - Deliver Vehicle
                 - Survive Timer
+```
 
+---
 
-        1.5.2 Trigger System
-            Responsável por:
+### 1.5.2 Trigger System
+
+#### Responsável por:
+
+```text
                 - ativação contextual
                 - trigger volumes
                 - eventos regionais
                 - transições
+```
 
-            Pode ativar:
+#### Pode ativar:
+
+```text
                 - perseguições
                 - cutscenes
                 - emboscadas
                 - chamadas de rádio
+```
 
+---
 
-        1.5.3 Dynamic Events
-            Responsável por:
+### 1.5.3 Dynamic Events
+
+#### Responsável por:
+
+```text
                 - eventos emergentes
                 - encontros aleatórios
                 - desafios contextuais
+```
 
-            Exemplos:
+#### Exemplos:
+
+```text
                 - rival encontra jogador
                 - polícia reforça região
                 - corrida espontânea
                 - emboscada de crew
+```
 
+---
 
-        1.5.4 Script Runtime
-            Responsável por:
+### 1.5.4 Script Runtime
+
+#### Responsável por:
+
+```text
                 - execução de scripts
                 - controle narrativo
                 - lógica sequencial
+```
 
-            NÃO deve:
+#### NÃO deve:
+
+```text
                 - possuir lógica de baixo nível
                 - acessar sistemas diretamente
+```
 
-            Deve usar:
+#### Deve usar:
+
+```text
                 - adapters
                 - event bus
                 - gameplay hooks
+```
 
+---
 
-        1.5.5 World Events
-            Responsável por:
+### 1.5.5 World Events
+
+#### Responsável por:
+
+```text
                 - eventos globais
                 - alterações de mundo
                 - pacing urbano
+```
 
-            Exemplos:
+#### Exemplos:
+
+```text
                 - chuva forte
                 - lockdown policial
                 - blackout
                 - congestionamento
+```
 
+---
 
-        1.5.6 Cinematic Hooks
-            Responsável por:
+### 1.5.6 Cinematic Hooks
+
+#### Responsável por:
+
+```text
                 - integração com cinematics
                 - transições
                 - câmera contextual
                 - eventos dramáticos
+```
 
+---
 
+<details>
+<summary><strong>1.6 World Systems</strong></summary>
 
-    1.6 World Systems
+---
+
+## Overview
+
+```text
         Responsável por:
             - comportamento urbano
             - ambientação
             - simulação contextual
             - dinâmica do mundo aberto
+```
+
+---
 
 
-        1.6.1 Traffic Runtime
-            Responsável por:
+### 1.6.1 Traffic Runtime
+
+#### Responsável por:
+
+```text
                 - veículos civis
                 - densidade urbana
                 - comportamento de tráfego
+```
 
-            Tráfego deve:
+#### Tráfego deve:
+
+```text
                 - parecer vivo
                 - favorecer gameplay
                 - criar momentos emergentes
+```
 
-            NÃO deve:
+#### NÃO deve:
+
+```text
                 - simular trânsito realista extremo
+```
 
+---
 
-        1.6.2 Civilian AI
-            Responsável por:
+### 1.6.2 Civilian AI
+
+#### Responsável por:
+
+```text
                 - comportamento civil
                 - reação ao caos
                 - evasão
                 - resposta contextual
+```
+
+---
 
 
-        1.6.3 Pedestrian Logic
-            Responsável por:
+### 1.6.3 Pedestrian Logic
+
+#### Responsável por:
+
+```text
                 - densidade populacional
                 - reações ambientais
                 - ambientação urbana
+```
 
-            Objetivo:
-                - aumentar sensação de cidade viva
+#### Objetivo:
+>aumentar sensação de cidade viva
 
+---
 
-        1.6.4 Ambient Events
-            Responsável por:
+### 1.6.4 Ambient Events
+
+#### Responsável por:
+
+```text
                 - pequenas ocorrências urbanas
                 - sensação de atividade
+```
 
-            Exemplos:
+#### Exemplos:
+
+```text
                 - acidentes leves
                 - caminhões parados
                 - obras
                 - eventos urbanos
+```
 
+---
 
-        1.6.5 Day/Night Cycle
-            Responsável por:
+### 1.6.5 Day/Night Cycle
+
+#### Responsável por:
+
+```text
                 - ciclo temporal
                 - iluminação contextual
                 - alteração atmosférica
+```
 
-            Deve influenciar:
+#### Deve influenciar:
+
+```text
                 - polícia
                 - tráfego
                 - eventos
                 - atmosfera
+```
+---
 
+### 1.6.6 Weather Runtime
 
-        1.6.6 Weather Runtime
-            Responsável por:
+#### Responsável por:
+
+```text
                 - chuva
                 - neblina
                 - tempestades
                 - umidade
+```
 
-            Deve influenciar:
+#### Deve influenciar:
+
+```text
                 - dirigibilidade
                 - visibilidade
                 - cinematografia
+```
 
+---
 
-        1.6.7 World Director
-            Esse é o cérebro do mundo aberto.
+### 1.6.7 World Director
+>Esse é o cérebro do mundo aberto.
 
-            Responsável por:
+#### Responsável por:
+
+```text
                 - intensidade urbana
                 - atividade contextual
                 - equilíbrio entre caos e calmaria
+```
 
-            Controla:
+#### Controla:
+
+```text
                 - tráfego
                 - polícia regional
                 - ambientação
                 - eventos emergentes
+```
 
+---
 
 
     1.7 Global Director
