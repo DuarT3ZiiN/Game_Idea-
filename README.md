@@ -151,323 +151,11 @@
 - World pacing
 - Dynamic events
 
-</details>
-
----
-
-<details>
-<summary><strong>2. Simulation Layer</strong></summary>
-
-```text
-2. Simulation Layer
-├── Vehicle Simulation
-│   ├── Tire Model
-│   ├── Suspension
-│   ├── Differential
-│   ├── Weight Transfer
-│   ├── Drift Assist
-│   ├── Stability Assist
-│   ├── Traction Assist
-│   ├── Aero Simulation
-│   ├── Surface Response
-│   ├── Collision Solver
-│   └── Damage Simulation
-│
-├── Traffic Simulation
-│   ├── Lane System
-│   ├── Traffic Behaviors
-│   ├── Avoidance System
-│   ├── Density Solver
-│   └── Intersection Logic
-│
-├── AI Simulation
-│   ├── Navigation Runtime
-│   ├── Pathfinding
-│   ├── Utility AI
-│   ├── Behavior Trees
-│   └── Decision Scheduler
-│
-├── World Streaming
-│   ├── District Streaming
-│   ├── LOD Manager
-│   ├── Async Loading
-│   ├── Occlusion System
-│   ├── Asset Streaming
-│   └── Memory Budgeting
-│
-└── Physics Runtime
-    ├── Broadphase
-    ├── Narrowphase
-    ├── Constraint Solver
-    ├── Raycasts
-    └── Collision Queries
-```
-### Responsibilities
-
-- Vehicle physics
-- AI processing
-- Streaming
-- Traffic behavior
-- Collision runtime
-
-</details>
-
----
-
-<details>
-<summary><strong>3. Core Layer</strong></summary>
-
-```text
-3. Core Layer
-├── ECS Runtime
-│   ├── Entities
-│   ├── Components
-│   ├── Systems
-│   └── Archetypes
-│
-├── Event Bus
-│   ├── Global Events
-│   ├── Local Events
-│   ├── Async Queue
-│   └── Event Priorities
-│
-├── State Machine Framework
-│   ├── Global States
-│   ├── Local States
-│   └── Transition Rules
-│
-├── Task Scheduler
-│   ├── Job Distribution
-│   ├── Priority Scheduling
-│   └── Runtime Budgeting
-│
-├── Async Job System
-│   ├── Background Jobs
-│   └── Thread Pools
-│
-├── Save System
-│   ├── Player Save
-│   ├── World Save
-│   ├── Serialization
-│   └── Versioning
-│
-├── Replay Runtime
-│   ├── Input Recording
-│   ├── State Recording
-│   ├── Playback Runtime
-│   └── Replay Cameras
-│
-├── Replication Layer
-│   ├── State Replication
-│   ├── Prediction
-│   ├── Reconciliation
-│   └── Network Priority
-│
-├── Resource Manager
-│   ├── Asset References
-│   ├── Runtime Cache
-│   └── Memory Tracking
-│
-├── Asset Registry
-│   ├── Vehicle Assets
-│   ├── World Assets
-│   └── Audio Assets
-│
-├── Data Serialization
-│   ├── Binary Serialization
-│   └── Config Serialization
-│
-├── Config Runtime
-│   ├── Gameplay Configs
-│   ├── AI Configs
-│   └── Economy Configs
-│
-├── Debug/Profiling Tools
-│   ├── Performance Metrics
-│   ├── AI Debug
-│   ├── Physics Debug
-│   └── Streaming Debug
-│
-└── Memory Manager
-    ├── Pool Allocators
-    ├── Streaming Memory
-    └── Leak Detection
-```
-### Responsibilities
-
-- ECS
-- Scheduling
-- Replication
-- Save system
-- Memory
-- Resource management
-
-</details>
-
----
-
-<details>
-<summary><strong>4. Presentation Layer</strong></summary>
-
-```text
-4. Presentation Layer
-├── Rendering
-│   ├── Lighting System
-│   ├── Post Processing
-│   ├── Material System
-│   ├── Reflection System
-│   ├── Shadow System
-│   └── Environment Rendering
-│
-├── Camera Systems
-│   ├── Gameplay Camera
-│   ├── Drift Camera
-│   ├── Pursuit Camera
-│   ├── Crash Camera
-│   ├── Replay Camera
-│   └── Photo Mode Camera
-│
-├── UI/HUD
-│   ├── Race HUD
-│   ├── Pursuit HUD
-│   ├── Drift HUD
-│   ├── Navigation HUD
-│   ├── Online HUD
-│   └── Garage UI
-│
-├── VFX
-│   ├── Nitro Effects
-│   ├── Drift Effects
-│   ├── Weather Effects
-│   ├── Damage Effects
-│   └── Environmental FX
-│
-├── Audio Runtime
-│   ├── Engine Audio
-│   ├── Pursuit Audio
-│   ├── Impact Audio
-│   ├── Environment Audio
-│   └── Spatial Audio
-│
-├── Music Director
-│   ├── Dynamic Layers
-│   ├── Pursuit Music
-│   ├── Race Music
-│   └── Ambient Music
-│
-├── Cinematics
-│   ├── Intro Sequences
-│   ├── Rival Introductions
-│   ├── Transition Cinematics
-│   └── Victory Sequences
-│
-├── Photo Mode
-│   ├── Filters
-│   ├── DOF Controls
-│   └── Pose Controls
-│
-└── Accessibility
-    ├── Color Accessibility
-    ├── Subtitle System
-    └── Input Accessibility
-```
-### Responsibilities
-
-- Rendering
-- Cinematics
-- Audio
-- UI
-- Camera behavior
-- Visual feedback
-
-</details>
-
----
-
-<details>
-<summary><strong>5. Platform Layer</strong></summary>
-
-```text
-5. Platform Layer
-├── Graphics API Layer
-│   ├── DX12 Backend
-│   ├── Vulkan Backend
-│   ├── GPU Command System
-│   └── Shader Interface
-│
-├── Input Layer
-│   ├── Controller Support
-│   ├── Keyboard/Mouse
-│   ├── Steering Wheel Support
-│   └── Input Mapping
-│
-├── File IO
-│   ├── Async File Loading
-│   ├── Save File Access
-│   └── Package System
-│
-├── Threading
-│   ├── Worker Threads
-│   ├── Synchronization
-│   ├── Thread Affinity
-│   └── Fiber System
-│
-├── GPU Interface
-│   ├── VRAM Management
-│   ├── Texture Upload
-│   └── Buffer Management
-│
-├── Platform Abstraction
-│   ├── Windows Platform
-│   ├── Console Platform
-│   └── Platform Services
-│
-├── Network Sockets
-│   ├── UDP Runtime
-│   ├── TCP Runtime
-│   ├── Packet Serialization
-│   └── Network Encryption
-│
-└── Hardware APIs
-    ├── Haptic APIs
-    ├── Audio Device APIs
-    ├── Telemetry Interfaces
-    └── Performance Counters
-```
-### Responsibilities
-
-- Hardware abstraction
-- DX12/Vulkan
-- Threading
-- IO
-- Networking
-- GPU communication
-
-</details>
-
----
-# Technology Stack
-
-| Area | Technology |
-|---|---|
-| Engine | Unreal Engine 5 |
-| Language | C++ |
-| Rendering | DX12 + Vulkan |
-| Physics | Chaos Modified |
-| Audio | Wwise |
-| UI | UMG Custom |
-| Networking | EOS / PlayFab |
-| ECS | Custom Hybrid ECS |
-| Profiling | Tracy + PIX + RenderDoc |
-| Build System | Unreal Build Tool |
-| Source Control | Perforce |
-| CI/CD | Jenkins + GitHub Actions |
-
 ---
 
 # 1. Game Layer
 
-> Core gameplay orchestration layer.
+> Nucleo principal de como o jogo deve funcionar.
 
 ---
 
@@ -1443,6 +1131,8 @@ Return To World
                     - state authority
 ```
 
+</details>
+
 ---
 
 <details>
@@ -1560,7 +1250,6 @@ Return To World
 
 ---
 
-
 ### 1.2.4 Heat System
 
 #### Responsável por:
@@ -1592,7 +1281,6 @@ Return To World
 
 ---
 
-
 ### 1.2.5 Spawn System
 
 #### Responsável por:
@@ -1620,7 +1308,6 @@ Return To World
 
 ---
 
-
 ### 1.2.6 Search System
 
 #### Responsável por:
@@ -1641,7 +1328,6 @@ Return To World
 ```
 
 ---
-
 
 ### 1.2.7 Roadblock System
 
@@ -1670,7 +1356,6 @@ Return To World
 
 ---
 
-
 ### 1.2.8 Helicopter System
 
 #### Responsável por:
@@ -1697,7 +1382,6 @@ Return To World
 
 ---
 
-
 ### 1.2.9 Escalation System
 
 #### Responsável por:
@@ -1723,7 +1407,6 @@ Return To World
 ```
 
 ---
-
 
 ### 1.2.10 Radio System
 
@@ -1804,7 +1487,10 @@ Return To World
                 - suporte policial indireto
 ```
 
+</details>
+
 ---
+
 <details>
 <summary><strong>1.3 Carrer Systems</strong></summary>
 
@@ -1901,6 +1587,8 @@ Return To World
                 - dificuldade regional
 ```
 
+</details>
+
 ---
 
 <details>
@@ -1919,7 +1607,6 @@ Return To World
 ```
 
 ---
-
 
 ### 1.4.1 Currency
 
@@ -1994,6 +1681,8 @@ Return To World
                 - eventos perigosos
 ```
 
+</details>
+
 ---
 
 <details>
@@ -2018,8 +1707,6 @@ Return To World
 ```
 
 ---
-
-
 
 ### 1.5.1 Objective Runtime
 
@@ -2146,6 +1833,8 @@ Return To World
                 - eventos dramáticos
 ```
 
+</details>
+
 ---
 
 <details>
@@ -2164,7 +1853,6 @@ Return To World
 ```
 
 ---
-
 
 ### 1.6.1 Traffic Runtime
 
@@ -2205,7 +1893,6 @@ Return To World
 
 ---
 
-
 ### 1.6.3 Pedestrian Logic
 
 #### Responsável por:
@@ -2217,6 +1904,7 @@ Return To World
 ```
 
 #### Objetivo:
+
 >aumentar sensação de cidade viva
 
 ---
@@ -2259,6 +1947,7 @@ Return To World
                 - eventos
                 - atmosfera
 ```
+
 ---
 
 ### 1.6.6 Weather Runtime
@@ -2283,6 +1972,7 @@ Return To World
 ---
 
 ### 1.6.7 World Director
+
 >Esse é o cérebro do mundo aberto.
 
 #### Responsável por:
@@ -2302,10 +1992,18 @@ Return To World
                 - eventos emergentes
 ```
 
+</details>
+
 ---
 
+<details>
+<summary><strong>1.7 Global Director</strong></summary>
 
-    1.7 Global Director
+---
+
+## Overview
+
+```text
         Responsável por:
             - orchestration global
             - pacing macro
@@ -2320,73 +2018,176 @@ Return To World
             - dirigir veículos
             - controlar física
             - controlar entidades individualmente
+```
 
+---
 
-        1.7.1 World Pacing
-            Responsável por:
+### 1.7.1 World Pacing
+
+#### Responsável por:
+
+```text
                 - alternância de intensidade
                 - descanso emocional
                 - escalada de tensão
+```
 
-            Objetivo:
+#### Objetivo:
+
+```text
                 - evitar fadiga constante
                 - manter flow cinematográfico
+```
 
+### 1.7.2 Dynamic Intensity
 
-        1.7.2 Dynamic Intensity
-            Mede:
+#### Mede:
+
+```text
                 - performance do jogador
                 - caos atual
                 - nível de pressão
                 - risco percebido
+```
 
-            Ajusta:
+#### Ajusta:
+
+```text
                 - agressividade
                 - spawn rates
                 - frequência de eventos
+```
 
+### 1.7.3 Traffic Density
 
-        1.7.3 Traffic Density
-            Responsável por:
+#### Responsável por:
+
+```text
                 - densidade global
                 - distribuição urbana
                 - pacing de tráfego
+```
 
+### 1.7.4 Police Pressure
 
-        1.7.4 Police Pressure
-            Responsável por:
+#### Responsável por:
+
+```text
                 - pressão policial macro
                 - saturação de perseguições
                 - heat regional
+```
 
+### 1.7.5 Audio Intensity
 
-        1.7.5 Audio Intensity
-            Responsável por:
+#### Responsável por:
+
+```text
                 - intensidade musical
                 - layering de soundtrack
                 - transições sonoras
+```
 
-            Deve responder:
+#### Deve responder:
+
+```text
                 - velocidade
                 - perseguição
                 - tensão
                 - risco
+```
 
+### 1.7.6 Event Orchestration
 
-        1.7.6 Event Orchestration
-            Responsável por:
+#### Responsável por:
+
+```text
                 - sincronização de grandes eventos
                 - pacing cinematográfico
                 - controle de espetáculo
+```
 
-            Exemplos:
+#### Exemplos:
+
+```text
                 - blackout durante pursuit
                 - tempestade iniciando em corrida
                 - lockdown policial
                 - entrada de rival crew
+```
 
-1. Simulation Layer
-    Responsável por:
+</details>
+
+---
+
+</details>
+
+---
+
+<details>
+<summary><strong>2. Simulation Layer</strong></summary>
+
+```text
+2. Simulation Layer
+├── Vehicle Simulation
+│   ├── Tire Model
+│   ├── Suspension
+│   ├── Differential
+│   ├── Weight Transfer
+│   ├── Drift Assist
+│   ├── Stability Assist
+│   ├── Traction Assist
+│   ├── Aero Simulation
+│   ├── Surface Response
+│   ├── Collision Solver
+│   └── Damage Simulation
+│
+├── Traffic Simulation
+│   ├── Lane System
+│   ├── Traffic Behaviors
+│   ├── Avoidance System
+│   ├── Density Solver
+│   └── Intersection Logic
+│
+├── AI Simulation
+│   ├── Navigation Runtime
+│   ├── Pathfinding
+│   ├── Utility AI
+│   ├── Behavior Trees
+│   └── Decision Scheduler
+│
+├── World Streaming
+│   ├── District Streaming
+│   ├── LOD Manager
+│   ├── Async Loading
+│   ├── Occlusion System
+│   ├── Asset Streaming
+│   └── Memory Budgeting
+│
+└── Physics Runtime
+    ├── Broadphase
+    ├── Narrowphase
+    ├── Constraint Solver
+    ├── Raycasts
+    └── Collision Queries
+```
+### Responsibilities
+
+- Vehicle physics
+- AI processing
+- Streaming
+- Traffic behavior
+- Collision runtime
+
+# 2. Simulation Layer
+
+>Onde a simulaçao é orquestrada.
+
+---
+
+## Responsável por:
+
+```text
         - simulação física
         - comportamento matemático
         - runtime de IA
@@ -2394,21 +2195,39 @@ Return To World
         - colisões
         - navegação
         - streaming operacional
+```
 
-    NÃO deve:
+---
+
+## NÃO deve:
+
+```text
         - conter regras de gameplay
         - controlar progressão
         - controlar narrativa
         - controlar pacing cinematográfico
+```
 
-    Objetivo:
+---
+
+## Objetivo:
+
+```text
         - fornecer simulação consistente
         - manter previsibilidade sistêmica
         - sustentar gameplay emergente
+```
 
+---
 
+<details>
+<summary><strong>2.1 Vehicle Simulation</strong></summary>
 
-    2.1 Vehicle Simulation
+---
+
+## Overview
+
+```text
         Responsável por:
             - comportamento dos veículos
             - física automotiva
@@ -2423,87 +2242,128 @@ Return To World
         NÃO deve:
             - ser simulador extremo
             - sacrificar diversão por realismo
+```
 
+---
 
-        2.1.1 Tire Model
-            Responsável por:
+### 2.1.1 Tire Model
+
+#### Responsável por:
+
+```text
                 - aderência
                 - perda de tração
                 - slip angles
                 - comportamento lateral
+```
 
-            Deve controlar:
+#### Deve controlar:
+
+```text
                 - grip progressivo
                 - breakaway previsível
                 - recuperação controlável
+```
 
+### 2.1.2 Suspension
 
-        2.1.2 Suspension
-            Responsável por:
+#### Responsável por:
+
+```text
                 - absorção de impacto
                 - transferência de peso
                 - estabilidade
+```
 
-            Deve influenciar:
+#### Deve influenciar:
+
+```text
                 - drift
                 - curvas
                 - sensação de velocidade
+```
 
+### 2.1.3 Differential
 
-        2.1.3 Differential
-            Responsável por:
+#### Responsável por:
+
+```text
                 - distribuição de torque
                 - comportamento em aceleração
                 - estabilidade de saída de curva
+```
+
+### 2.1.4 Weight Transfer
 
 
-        2.1.4 Weight Transfer
-            Responsável por:
+#### Responsável por:
+
+```text
                 - movimentação dinâmica de massa
                 - sensação de peso
                 - estabilidade
+```
 
-            Deve:
+#### Deve:
+
+```text
                 - parecer real
                 - permanecer arcade
+```
 
+### 2.1.5 Drift Assist
 
-        2.1.5 Drift Assist
-            Responsável por:
+#### Responsável por:
+
+```text
                 - estabilidade de drift
                 - transições
                 - countersteering assist
+```
 
-            NÃO deve:
+#### NÃO deve:
+
+```text
                 - dirigir pelo jogador
                 - parecer automático
+```
 
+### 2.1.6 Stability Assist
 
-        2.1.6 Stability Assist
-            Responsável por:
+#### Responsável por:
+
+```text
                 - recuperação de controle
                 - estabilidade em alta velocidade
                 - suavização de inputs
+```
 
+### 2.1.7 Traction Assist
 
-        2.1.7 Traction Assist
-            Responsável por:
+#### Responsável por:
+
+```text
                 - controle de wheelspin
                 - saída de curva
                 - launches
+```
 
+### 2.1.8 Aero Simulation
 
-        2.1.8 Aero Simulation
-            Responsável por:
+#### Responsável por:
+
+```text
                 - downforce
                 - drag aerodinâmico
                 - estabilidade em alta velocidade
+```
 
+### 2.1.9 Surface Response
 
-        2.1.9 Surface Response
-            Responsável por:
-                - resposta do veículo ao terreno
+#### Responsável por:
+>resposta do veículo ao terreno
 
+```text
             Superfícies:
                 - asfalto
                 - concreto
@@ -2511,134 +2371,215 @@ Return To World
                 - água
                 - óleo
                 - grama
+```
 
+### 2.1.10 Collision Solver
 
-        2.1.10 Collision Solver
-            Responsável por:
+#### Responsável por:
+
+```text
                 - impactos
                 - transferência de força
                 - deformações simplificadas
+```
 
-            Objetivo:
+#### Objetivo:
+
+```text
                 - impacto cinematográfico
                 - feedback visual forte
+```
 
+### 2.1.11 Damage Simulation
 
-        2.1.11 Damage Simulation
-            Responsável por:
+#### Responsável por:
+
+```text
                 - dano mecânico
                 - dano visual
                 - degradação operacional
+```
 
-            Pode afetar:
+#### Pode afetar:
+
+```text
                 - velocidade
                 - steering
                 - aceleração
                 - estabilidade
+```
 
+</details>
 
+---
 
-    2.2 Traffic Simulation
+<details>
+<summary><strong>2.2 Traffic Simulation</strong></summary>
+
+---
+
+## Overview
+
+```text
         Responsável por:
             - veículos civis
             - fluxo urbano
             - comportamento ambiental
+```
 
+---
 
-        2.2.1 Lane System
-            Responsável por:
+### 2.2.1 Lane System
+
+#### Responsável por:
+
+```text
                 - lanes
                 - fluxo de trânsito
                 - organização viária
+```
 
+### 2.2.2 Traffic Behaviors
 
-        2.2.2 Traffic Behaviors
-            Responsável por:
+#### Responsável por:
+
+```text
                 - aceleração
                 - frenagem
                 - trocas de faixa
                 - reação ao jogador
+```
 
+### 2.2.3 Avoidance System
 
-        2.2.3 Avoidance System
-            Responsável por:
+#### Responsável por:
+
+```text
                 - evasão de colisões
                 - prevenção de deadlocks
                 - resposta emergencial
+```
 
+### 2.2.4 Density Solver
 
-        2.2.4 Density Solver
-            Responsável por:
+#### Responsável por:
+
+```text
                 - densidade de veículos
                 - distribuição dinâmica
                 - controle de carga computacional
+```
 
+### 2.2.5 Intersection Logic
 
-        2.2.5 Intersection Logic
-            Responsável por:
+#### Responsável por:
+
+```text
                 - cruzamentos
                 - prioridade
                 - semáforos
                 - bloqueios
+```
 
+</details>
 
+---
 
-    2.3 AI Simulation
+<details>
+<summary><strong>2.3 AI Simulation</strong></summary>
+
+---
+
+## Overview
+
+```text
         Responsável por:
             - tomada de decisão
             - navegação
             - comportamento contextual
             - processamento de IA
+```
 
+### 2.3.1 Navigation Runtime
 
-        2.3.1 Navigation Runtime
-            Responsável por:
+#### Responsável por:
+
+```text
                 - navegação em mundo aberto
                 - rotas
                 - atualização dinâmica
+```
 
+### 2.3.2 Pathfinding
 
-        2.3.2 Pathfinding
-            Responsável por:
+#### Responsável por:
+
+```text
                 - cálculo de caminhos
                 - rotas alternativas
                 - desvios contextuais
+```
 
-            NÃO deve:
+#### NÃO deve:
+
+```text
                 - recalcular tudo constantemente
+```
 
+### 2.3.3 Utility AI
 
-        2.3.3 Utility AI
-            Responsável por:
+#### Responsável por:
+
+```text
                 - decisões contextuais
                 - avaliação de utilidade
                 - prioridades dinâmicas
+```
 
-            Melhor para:
+#### Melhor para:
+
+```text
                 - racers
                 - polícia
                 - crews
+```
 
+### 2.3.4 Behavior Trees
 
-        2.3.4 Behavior Trees
-            Responsável por:
+#### Responsável por:
+
+```text
                 - comportamento procedural
                 - execução hierárquica
                 - sequências táticas
+```
 
+### 2.3.5 Decision Scheduler
 
-        2.3.5 Decision Scheduler
-            Responsável por:
+#### Responsável por:
+
+```text
                 - distribuição de processamento
                 - frequência de atualização
                 - otimização de IA
+```
 
-            Objetivo:
-                - evitar gargalos CPU
+#### Objetivo:
 
+>evitar gargalos CPU
 
+</details>
 
-    2.4 World Streaming
+---
+
+<details>
+<summary><strong>2.4 World Streaming</strong></summary>
+
+---
+
+## Overview
+
+```text
         Responsável por:
             - carregamento do mundo
             - descarregamento
@@ -2648,116 +2589,281 @@ Return To World
         Objetivo:
             - eliminar loading perceptível
             - manter performance estável
+```
 
+---
 
-        2.4.1 District Streaming
-            Responsável por:
+### 2.4.1 District Streaming
+
+#### Responsável por:
+
+```text
                 - carregamento regional
                 - transição de distritos
+```
 
+### 2.4.2 LOD Manager
 
-        2.4.2 LOD Manager
-            Responsável por:
+#### Responsável por:
+
+```text
                 - level of detail
                 - redução de custo gráfico
                 - troca dinâmica de assets
+```
 
+### 2.4.3 Async Loading
 
-        2.4.3 Async Loading
-            Responsável por:
+#### Responsável por:
+
+```text
                 - carregamento assíncrono
                 - preloading
                 - streaming preditivo
+```
 
+### 2.4.4 Occlusion System
 
-        2.4.4 Occlusion System
-            Responsável por:
+#### Responsável por:
+
+```text
                 - ocultação
                 - redução de draw calls
                 - economia de GPU
+```
 
+### 2.4.5 Asset Streaming
 
-        2.4.5 Asset Streaming
-            Responsável por:
+#### Responsável por:
+
+```text
                 - texturas
                 - meshes
                 - áudio
                 - efeitos
+```
 
+### 2.4.6 Memory Budgeting
 
-        2.4.6 Memory Budgeting
-            Responsável por:
+#### Responsável por:
+
+```text
                 - limite de memória
                 - descarregamento inteligente
                 - prevenção de overflow
+```
 
+</details>
 
+---
 
-    2.5 Physics Runtime
+<details>
+<summary><strong>2.5 Physics Runtime</strong></summary>
+
+---
+
+## Overview
+
+```text
         Responsável por:
             - física global
             - colisões
             - queries físicas
             - constraints
+```
 
+### 2.5.1 Broadphase
 
-        2.5.1 Broadphase
-            Responsável por:
+#### Responsável por:
+
+```text
                 - filtragem inicial de colisões
                 - redução de custo computacional
+```
 
+### 2.5.2 Narrowphase
 
-        2.5.2 Narrowphase
-            Responsável por:
+#### Responsável por:
+
+```text
                 - resolução precisa de colisões
                 - contatos detalhados
+```
 
+### 2.5.3 Constraint Solver
 
-        2.5.3 Constraint Solver
-            Responsável por:
+#### Responsável por:
+
+```text
                 - juntas
                 - suspensão
                 - conexões físicas
+```
 
+### 2.5.4 Raycasts
 
-        2.5.4 Raycasts
-            Responsável por:
+#### Responsável por:
+
+```text
                 - detecção de superfície
                 - sensores
-                - IA
+                - IA 
                 - suspensão
+```
 
+### 2.5.5 Collision Queries
 
-        2.5.5 Collision Queries
-            Responsável por:
+#### Responsável por:
+
+```text
                 - overlap tests
                 - sweep tests
                 - spatial queries
+```
 
-3. Core Layer
-    Responsável por:
+</details>
+
+---
+
+</details>
+
+---
+
+<details>
+<summary><strong>3. Core Layer</strong></summary>
+
+```text
+1. Core Layer
+├── ECS Runtime
+│   ├── Entities
+│   ├── Components
+│   ├── Systems
+│   └── Archetypes
+│
+├── Event Bus
+│   ├── Global Events
+│   ├── Local Events
+│   ├── Async Queue
+│   └── Event Priorities
+│
+├── State Machine Framework
+│   ├── Global States
+│   ├── Local States
+│   └── Transition Rules
+│
+├── Task Scheduler
+│   ├── Job Distribution
+│   ├── Priority Scheduling
+│   └── Runtime Budgeting
+│
+├── Async Job System
+│   ├── Background Jobs
+│   └── Thread Pools
+│
+├── Save System
+│   ├── Player Save
+│   ├── World Save
+│   ├── Serialization
+│   └── Versioning
+│
+├── Replay Runtime
+│   ├── Input Recording
+│   ├── State Recording
+│   ├── Playback Runtime
+│   └── Replay Cameras
+│
+├── Replication Layer
+│   ├── State Replication
+│   ├── Prediction
+│   ├── Reconciliation
+│   └── Network Priority
+│
+├── Resource Manager
+│   ├── Asset References
+│   ├── Runtime Cache
+│   └── Memory Tracking
+│
+├── Asset Registry
+│   ├── Vehicle Assets
+│   ├── World Assets
+│   └── Audio Assets
+│
+├── Data Serialization
+│   ├── Binary Serialization
+│   └── Config Serialization
+│
+├── Config Runtime
+│   ├── Gameplay Configs
+│   ├── AI Configs
+│   └── Economy Configs
+│
+├── Debug/Profiling Tools
+│   ├── Performance Metrics
+│   ├── AI Debug
+│   ├── Physics Debug
+│   └── Streaming Debug
+│
+└── Memory Manager
+    ├── Pool Allocators
+    ├── Streaming Memory
+    └── Leak Detection
+```
+### Responsibilities
+
+- ECS
+- Scheduling
+- Replication
+- Save system
+- Memory
+- Resource management
+
+# 3. Core Layer
+
+>Nucleo e infraestura ligada ao jogo.
+
+## Responsável por:
+
+```text
         - infraestrutura central
         - comunicação sistêmica
         - gerenciamento de runtime
         - persistência
         - execução assíncrona
         - authority global
+```
 
-    Objetivo:
+---
+
+## Objetivo:
+
+```text
         - sustentar todos os layers
         - evitar acoplamento direto
         - garantir escalabilidade
         - garantir estabilidade operacional
+```
 
-    NÃO deve:
+---
+
+## NÃO deve:
+
+```text
         - conter gameplay
         - conter regras de corrida
         - conter narrativa
         - conter lógica visual
+```
 
+---
 
+<details>
+<summary><strong>3.1 ECS Runtime</strong></summary>
 
-    3.1 ECS Runtime
+---
+
+## Overview
+
+```text
         Responsável por:
             - gerenciamento de entidades
             - components
@@ -2768,43 +2874,68 @@ Return To World
             - escalabilidade
             - paralelismo
             - performance
+```
+
+---
 
 
-        3.1.1 Entities
-            Representam:
+### 3.1.1 Entities
+
+#### Representam:
+
+```text
                 - carros
                 - polícia
                 - tráfego
                 - objetos
                 - triggers
+```
 
+### 3.1.2 Components
 
-        3.1.2 Components
-            Contêm:
+#### Contêm:
+
+```text
                 - dados puros
                 - estado
                 - configuração
+```
 
-            NÃO devem:
-                - possuir lógica pesada
+### NÃO devem:
+>possuir lógica pesada
 
+### 3.1.3 Systems
 
-        3.1.3 Systems
-            Responsáveis por:
+#### Responsáveis por:
+
+```text
                 - processamento
                 - execução paralela
                 - atualização de entidades
+```
 
+### 3.1.4 Archetypes
 
-        3.1.4 Archetypes
-            Responsáveis por:
+#### Responsáveis por:
+
+```text
                 - agrupamento eficiente
                 - cache locality
                 - performance massiva
+```
 
+</details>
 
+---
 
-    3.2 Event Bus
+<details>
+<summary><strong>3.2 Event Bus</strong></summary>
+
+---
+
+## Overview
+
+```text
         Responsável por:
             - comunicação desacoplada
             - propagação de eventos
@@ -2815,40 +2946,64 @@ Return To World
             - facilitar replay
             - facilitar telemetry
             - facilitar online
+```
 
+---
 
-        3.2.1 Global Events
-            Exemplos:
+### 3.2.1 Global Events
+
+#### Exemplos:
+
+```text
                 - OnRaceStart
                 - OnPursuitBegin
                 - OnPlayerCrash
                 - OnDistrictLoaded
+```
 
+### 3.2.2 Local Events
 
-        3.2.2 Local Events
-            Responsáveis por:
+#### Responsáveis por:
+
+```text
                 - eventos regionais
                 - eventos temporários
                 - comunicação contextual
+```
 
+### 3.2.3 Async Queue
 
-        3.2.3 Async Queue
-            Responsável por:
+#### Responsável por:
+
+```text
                 - processamento assíncrono
                 - buffering
                 - ordenação
+```
 
+### 3.2.4 Event Priorities
 
-        3.2.4 Event Priorities
-            Prioridades:
+#### Prioridades:
+
+```text
                 - Critical
                 - High
                 - Normal
                 - Background
+```
 
+</details>
 
+---
 
-    3.3 State Machine Framework
+<details>
+<summary><strong>3.3 State Machine Framework</strong></summary>
+
+---
+
+## Overview
+
+```text
         Responsável por:
             - controle de estados
             - transições
@@ -2858,32 +3013,53 @@ Return To World
             - previsibilidade
             - estabilidade
             - prevenção de estados inválidos
+```
 
+---
 
-        3.3.1 Global States
-            Exemplos:
+### 3.3.1 Global States
+
+#### Exemplos:
+
+```text
                 - MainMenu
                 - FreeRoam
                 - Race
                 - Pursuit
                 - Garage
+```
 
+### 3.3.2 Local States
 
-        3.3.2 Local States
-            Exemplos:
+#### Exemplos:
+
+```text
                 - Countdown
                 - DriftChain
                 - SearchMode
+```
 
+### 3.3.3 Transition Rules
 
-        3.3.3 Transition Rules
-            Responsável por:
+#### Responsável por:
+
+```text
                 - validar transições
                 - impedir estados ilegais
+```
 
+</details>
 
+---
 
-    3.4 Task Scheduler
+<details>
+<summary><strong>3.4 Task Scheduler</strong></summary>
+
+---
+
+## Overview
+
+```text
         Responsável por:
             - distribuição de tarefas
             - balanceamento de carga
@@ -2893,52 +3069,87 @@ Return To World
             - evitar gargalos
             - otimizar CPU
             - escalabilidade multicore
+```
 
+### 3.4.1 Job Distribution
 
-        3.4.1 Job Distribution
-            Responsável por:
+#### Responsável por:
+
+```text
                 - distribuição paralela
                 - worker threads
+```
 
+### 3.4.2 Priority Scheduling
 
-        3.4.2 Priority Scheduling
-            Prioridades:
+#### Prioridades:
+
+```text
                 - gameplay crítico
                 - física
                 - IA
                 - background
+```
 
+### 3.4.3 Runtime Budgeting
 
-        3.4.3 Runtime Budgeting
-            Responsável por:
+#### Responsável por:
+
+```text
                 - limitar custo de frame
                 - controlar overload
+```
 
+</details>
 
+---
 
-    3.5 Async Job System
+<details>
+<summary><strong>3.5 Async Job System</strong></summary>
+
+---
+
+## Overview
+
+```text
         Responsável por:
             - tarefas assíncronas
             - IO
             - streaming
             - cálculos pesados
+```
 
+### 3.5.1 Background Jobs
 
-        3.5.1 Background Jobs
-            Exemplos:
+#### Exemplos:
+
+```text
                 - loading
                 - compressão
                 - analytics
+```
 
+### 3.5.2 Thread Pools
 
-        3.5.2 Thread Pools
-            Responsável por:
+#### Responsável por:
+
+```text
                 - reutilização de threads
                 - otimização de CPU
+```
 
+</details>
 
+---
 
-    3.6 Save System
+<details>
+<summary><strong>3.6 Save System</strong></summary>
+
+---
+
+## Overview
+
+```text
         Responsável por:
             - persistência
             - serialização
@@ -2947,107 +3158,175 @@ Return To World
         Objetivo:
             - salvar estado global
             - suportar mundo persistente
+```
 
+---
 
-        3.6.1 Player Save
-            Contém:
+### 3.6.1 Player Save
+
+#### Contém:
+
+```text
                 - progressão
                 - carros
                 - dinheiro
                 - reputação
+```
 
+### 3.6.2 World Save
 
-        3.6.2 World Save
-            Contém:
+#### Contém:
+
+```text
                 - estado do mundo
                 - eventos ativos
                 - mudanças persistentes
+```
 
+### 3.6.3 Serialization
 
-        3.6.3 Serialization
-            Responsável por:
+#### Responsável por:
+
+```text
                 - compactação
                 - escrita eficiente
                 - leitura segura
+```
 
+### 3.6.4 Versioning
 
-        3.6.4 Versioning
-            Responsável por:
+#### Responsável por:
+
+```text
                 - compatibilidade
                 - migração de save
                 - patches futuros
+```
 
+</details>
 
+---
 
-    3.7 Replay Runtime
+<details>
+<summary><strong>3.7 Replay Runtime</strong></summary>
+
+---
+
+## Overview
+
+```text
         Responsável por:
             - gravação temporal
             - playback
             - replay cinematográfico
+```
 
+### 3.7.1 Input Recording
 
-        3.7.1 Input Recording
-            Responsável por:
+#### Responsável por:
+
+```text
                 - inputs do jogador
                 - sincronização temporal
+```
 
+### 3.7.2 State Recording
 
-        3.7.2 State Recording
-            Responsável por:
+#### Responsável por:
+
+```text
                 - transforms
                 - velocidade
                 - eventos importantes
+```
 
+### 3.7.3 Playback Runtime
 
-        3.7.3 Playback Runtime
-            Responsável por:
+#### Responsável por:
+
+```text
                 - reprodução
                 - sincronização
                 - timeline
+```
 
+### 3.7.4 Replay Cameras
 
-        3.7.4 Replay Cameras
-            Responsável por:
+#### Responsável por:
+
+```text
                 - câmeras cinematográficas
                 - cortes dinâmicos
                 - tracking
+```
 
+</details>
 
+---
 
-    3.8 Replication Layer
+<details>
+<summary><strong>3.8 Replication Layer</strong></summary>
+
+---
+
+## Overview
+
+```text
         Responsável por:
             - sincronização online
             - authority
             - estado de rede
+```
 
+### 3.8.1 State Replication
 
-        3.8.1 State Replication
-            Responsável por:
+#### Responsável por:
+
+```text
                 - replicar entidades
                 - replicar estados críticos
+```
 
+### 3.8.2 Prediction
 
-        3.8.2 Prediction
-            Responsável por:
+#### Responsável por:
+
+```text
                 - client prediction
                 - suavização
+```
 
+### 3.8.3 Reconciliation
 
-        3.8.3 Reconciliation
-            Responsável por:
+#### Responsável por:
+
+```text
                 - correção de desync
                 - validação de authority
+```
 
+### 3.8.4 Network Priority
 
-        3.8.4 Network Priority
-            Prioriza:
+#### Prioriza:
+
+```text
                 - player
                 - polícia próxima
                 - racers próximos
+```
 
+</details>
 
+---
 
-    3.9 Resource Manager
+<details>
+<summary><strong>3.9 Resource Manager</strong></summary>
+
+---
+
+## Overview
+
+```text
         Responsável por:
             - gerenciamento de assets
             - memória
@@ -3056,144 +3335,240 @@ Return To World
         Objetivo:
             - evitar duplicação
             - otimizar carregamento
+```
 
+---
 
-        3.9.1 Asset References
-            Responsável por:
+### 3.9.1 Asset References
+
+#### Responsável por:
+
+```text
                 - referências seguras
                 - controle de uso
+```
 
+### 3.9.2 Runtime Cache
 
-        3.9.2 Runtime Cache
-            Responsável por:
+#### Responsável por:
+
+```text
                 - cache inteligente
                 - reutilização
+```
 
+### 3.9.3 Memory Tracking
 
-        3.9.3 Memory Tracking
-            Responsável por:
+#### Responsável por:
+
+```text
                 - monitoramento de memória
                 - prevenção de leaks
+```
 
+</details>
 
+---
 
-    3.10 Asset Registry
+<details>
+<summary><strong>3.10 Asset Registry</strong></summary>
+
+---
+
+## Overview
+
+```text
         Responsável por:
             - catalogar assets
             - lookup
             - metadata
+```
 
+### 3.10.1 Vehicle Assets
 
-        3.10.1 Vehicle Assets
-            Contém:
+#### Contém:
+
+```text
                 - carros
                 - peças
                 - tuning
+```
 
+### 3.10.2 World Assets
 
-        3.10.2 World Assets
-            Contém:
+#### Contém:
+
+```text
                 - distritos
                 - props
                 - tráfego
+```
 
+### 3.10.3 Audio Assets
 
-        3.10.3 Audio Assets
-            Contém:
+#### Contém:
+
+```text
                 - música
                 - rádio
                 - FX
+```
 
+</details>
 
+---
 
-    3.11 Data Serialization
+<details>
+<summary><strong>3.11 Data Serialization</strong></summary>
+
+---
+
+## Overview
+
+```text
         Responsável por:
             - conversão de dados
             - persistência binária
             - compactação
+```
 
+### 3.11.1 Binary Serialization
 
-        3.11.1 Binary Serialization
-            Objetivo:
+#### Objetivo:
+
+```text
                 - performance
                 - baixo custo
+```
 
+### 3.11.2 Config Serialization
 
-        3.11.2 Config Serialization
-            Responsável por:
+#### Responsável por:
+
+```text
                 - configs
                 - tuning
                 - balancing
+```
 
+</details>
 
+---
 
-    3.12 Config Runtime
+<details>
+<summary><strong>3.12 Config Runtime</strong></summary>
+
+---
+
+## Overview
+
+```text
         Responsável por:
             - configuração dinâmica
             - balancing
             - tuning em runtime
+```
 
+### 3.12.1 Gameplay Configs
 
-        3.12.1 Gameplay Configs
-            Controla:
+#### Controla:
+
+```text
                 - drift assist
                 - heat
                 - rewards
+```
 
+### 3.12.2 AI Configs
 
-        3.12.2 AI Configs
-            Controla:
+#### Controla:
+
+```text
                 - agressividade
                 - reaction times
                 - pursuit pressure
+```
 
+### 3.12.3 Economy Configs
 
-        3.12.3 Economy Configs
-            Controla:
+#### Controla:
+
+```text
                 - preços
                 - scaling
                 - payouts
+```
 
+</details>
 
+---
 
-    3.13 Debug/Profiling Tools
+<details>
+<summary><strong>3.13 Debug/Profiling Tools</strong></summary>
+
+---
+
+## Overview
+
+```text
         Responsável por:
             - debugging
             - profiling
             - análise de performance
+```
 
+### 3.13.1 Performance Metrics
 
-        3.13.1 Performance Metrics
-            Mede:
+#### Mede:
+
+```text
                 - frametime
                 - CPU
                 - GPU
                 - streaming cost
+```
 
+### 3.13.2 AI Debug
 
-        3.13.2 AI Debug
-            Mostra:
+#### Mostra:
+
+```text
                 - decisões
                 - pathfinding
                 - targeting
+```
 
+### 3.13.3 Physics Debug
 
-        3.13.3 Physics Debug
-            Mostra:
+#### Mostra:
+
+```text
                 - colisões
                 - suspensão
                 - raycasts
+```
 
+### 3.13.4 Streaming Debug
 
-        3.13.4 Streaming Debug
-            Mostra:
+#### Mostra:
+
+```text
                 - carregamento
                 - memória
                 - LOD transitions
+```
+</details>
 
+---
 
+<details>
+<summary><strong>3.14 Memory Manager</strong></summary>
 
-    3.14 Memory Manager
+---
+
+## Overview
+
+```text
         Responsável por:
             - alocação
             - pools
@@ -3203,27 +3578,209 @@ Return To World
             - estabilidade
             - previsibilidade
             - baixo overhead
+```
 
+### 3.14.1 Pool Allocators
 
-        3.14.1 Pool Allocators
-            Responsável por:
+#### Responsável por:
+
+```text
                 - allocations rápidas
                 - reutilização
+```
 
+### 3.14.2 Streaming Memory
 
-        3.14.2 Streaming Memory
-            Responsável por:
+#### Responsável por:
+
+```text
                 - budget de streaming
                 - descarregamento
+```
 
+### 3.14.3 Leak Detection
 
-        3.14.3 Leak Detection
-            Responsável por:
+#### Responsável por:
+
+```text
                 - detectar vazamentos
                 - rastrear referências
+```
 
+</details>
+
+---
+
+</details>
+
+---
+
+<details>
+<summary><strong>4. Presentation Layer</strong></summary>
+
+```text
 4. Presentation Layer
-    Responsável por:
+├── Rendering
+│   ├── Lighting System
+│   ├── Post Processing
+│   ├── Material System
+│   ├── Reflection System
+│   ├── Shadow System
+│   └── Environment Rendering
+│
+├── Camera Systems
+│   ├── Gameplay Camera
+│   ├── Drift Camera
+│   ├── Pursuit Camera
+│   ├── Crash Camera
+│   ├── Replay Camera
+│   └── Photo Mode Camera
+│
+├── UI/HUD
+│   ├── Race HUD
+│   ├── Pursuit HUD
+│   ├── Drift HUD
+│   ├── Navigation HUD
+│   ├── Online HUD
+│   └── Garage UI
+│
+├── VFX
+│   ├── Nitro Effects
+│   ├── Drift Effects
+│   ├── Weather Effects
+│   ├── Damage Effects
+│   └── Environmental FX
+│
+├── Audio Runtime
+│   ├── Engine Audio
+│   ├── Pursuit Audio
+│   ├── Impact Audio
+│   ├── Environment Audio
+│   └── Spatial Audio
+│
+├── Music Director
+│   ├── Dynamic Layers
+│   ├── Pursuit Music
+│   ├── Race Music
+│   └── Ambient Music
+│
+├── Cinematics
+│   ├── Intro Sequences
+│   ├── Rival Introductions
+│   ├── Transition Cinematics
+│   └── Victory Sequences
+│
+├── Photo Mode
+│   ├── Filters
+│   ├── DOF Controls
+│   └── Pose Controls
+│
+└── Accessibility
+    ├── Color Accessibility
+    ├── Subtitle System
+    └── Input Accessibility
+```
+### Responsibilities
+
+- Rendering
+- Cinematics
+- Audio
+- UI
+- Camera behavior
+- Visual feedback
+
+</details>
+
+---
+
+<details>
+<summary><strong>5. Platform Layer</strong></summary>
+
+```text
+5. Platform Layer
+├── Graphics API Layer
+│   ├── DX12 Backend
+│   ├── Vulkan Backend
+│   ├── GPU Command System
+│   └── Shader Interface
+│
+├── Input Layer
+│   ├── Controller Support
+│   ├── Keyboard/Mouse
+│   ├── Steering Wheel Support
+│   └── Input Mapping
+│
+├── File IO
+│   ├── Async File Loading
+│   ├── Save File Access
+│   └── Package System
+│
+├── Threading
+│   ├── Worker Threads
+│   ├── Synchronization
+│   ├── Thread Affinity
+│   └── Fiber System
+│
+├── GPU Interface
+│   ├── VRAM Management
+│   ├── Texture Upload
+│   └── Buffer Management
+│
+├── Platform Abstraction
+│   ├── Windows Platform
+│   ├── Console Platform
+│   └── Platform Services
+│
+├── Network Sockets
+│   ├── UDP Runtime
+│   ├── TCP Runtime
+│   ├── Packet Serialization
+│   └── Network Encryption
+│
+└── Hardware APIs
+    ├── Haptic APIs
+    ├── Audio Device APIs
+    ├── Telemetry Interfaces
+    └── Performance Counters
+```
+### Responsibilities
+
+- Hardware abstraction
+- DX12/Vulkan
+- Threading
+- IO
+- Networking
+- GPU communication
+
+</details>
+
+---
+# Technology Stack
+
+| Area | Technology |
+|---|---|
+| Engine | Unreal Engine 5 |
+| Language | C++ |
+| Rendering | DX12 + Vulkan |
+| Physics | Chaos Modified |
+| Audio | Wwise |
+| UI | UMG Custom |
+| Networking | EOS / PlayFab |
+| ECS | Custom Hybrid ECS |
+| Profiling | Tracy + PIX + RenderDoc |
+| Build System | Unreal Build Tool |
+| Source Control | Perforce |
+| CI/CD | Jenkins + GitHub Actions |
+
+---
+
+# 4. Presentation Layer
+
+>Responsavel pela renderização do conteúdo do jogo.
+
+## Responsável por:
+
+```text
         - apresentação visual
         - feedback audiovisual
         - cinematografia
@@ -3231,22 +3788,40 @@ Return To World
         - câmera
         - efeitos
         - sensação de impacto
+```
 
-    Objetivo:
+---
+
+## Objetivo:
+
+```text
         - transformar simulação em espetáculo
         - aumentar percepção de velocidade
         - reforçar identidade visual
         - elevar intensidade emocional
+```
 
-    NÃO deve:
+---
+
+## NÃO deve:
+
+```text
         - conter regras de gameplay
         - conter física
         - conter lógica de progressão
         - controlar authority sistêmica
+```
 
+---
 
+<details>
+<summary><strong>4.1 Rendering</strong></summary>
 
-    4.1 Rendering
+---
+
+## Overview
+
+```text
         Responsável por:
             - renderização visual
             - iluminação
@@ -3258,21 +3833,27 @@ Return To World
             - alta percepção de velocidade
             - forte identidade visual
             - leitura clara em alta velocidade
+```
 
+### 4.1.1 Lighting System
 
-        4.1.1 Lighting System
-            Responsável por:
+#### Responsável por:
+
+```text
                 - iluminação global
                 - iluminação dinâmica
                 - headlights
                 - neon
                 - emissive lighting
+```
 
-            Deve priorizar:
+### Deve priorizar:
+
+```text
                 - atmosfera
                 - leitura visual
                 - contraste cinematográfico
-
+```
 
         4.1.2 Post Processing
             Responsável por:
@@ -3666,7 +4247,7 @@ Return To World
                 - assistências
                 - simplificação de inputs
 
-5. Platform Layer
+# 5. Platform Layer
     Responsável por:
         - abstração de hardware
         - integração com sistema operacional
