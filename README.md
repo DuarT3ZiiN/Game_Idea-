@@ -3689,91 +3689,6 @@ Return To World
 - Camera behavior
 - Visual feedback
 
-</details>
-
----
-
-<details>
-<summary><strong>5. Platform Layer</strong></summary>
-
-```text
-5. Platform Layer
-├── Graphics API Layer
-│   ├── DX12 Backend
-│   ├── Vulkan Backend
-│   ├── GPU Command System
-│   └── Shader Interface
-│
-├── Input Layer
-│   ├── Controller Support
-│   ├── Keyboard/Mouse
-│   ├── Steering Wheel Support
-│   └── Input Mapping
-│
-├── File IO
-│   ├── Async File Loading
-│   ├── Save File Access
-│   └── Package System
-│
-├── Threading
-│   ├── Worker Threads
-│   ├── Synchronization
-│   ├── Thread Affinity
-│   └── Fiber System
-│
-├── GPU Interface
-│   ├── VRAM Management
-│   ├── Texture Upload
-│   └── Buffer Management
-│
-├── Platform Abstraction
-│   ├── Windows Platform
-│   ├── Console Platform
-│   └── Platform Services
-│
-├── Network Sockets
-│   ├── UDP Runtime
-│   ├── TCP Runtime
-│   ├── Packet Serialization
-│   └── Network Encryption
-│
-└── Hardware APIs
-    ├── Haptic APIs
-    ├── Audio Device APIs
-    ├── Telemetry Interfaces
-    └── Performance Counters
-```
-### Responsibilities
-
-- Hardware abstraction
-- DX12/Vulkan
-- Threading
-- IO
-- Networking
-- GPU communication
-
-</details>
-
----
-# Technology Stack
-
-| Area | Technology |
-|---|---|
-| Engine | Unreal Engine 5 |
-| Language | C++ |
-| Rendering | DX12 + Vulkan |
-| Physics | Chaos Modified |
-| Audio | Wwise |
-| UI | UMG Custom |
-| Networking | EOS / PlayFab |
-| ECS | Custom Hybrid ECS |
-| Profiling | Tracy + PIX + RenderDoc |
-| Build System | Unreal Build Tool |
-| Source Control | Perforce |
-| CI/CD | Jenkins + GitHub Actions |
-
----
-
 # 4. Presentation Layer
 
 >Responsavel pela renderização do conteúdo do jogo.
@@ -3855,115 +3770,180 @@ Return To World
                 - contraste cinematográfico
 ```
 
-        4.1.2 Post Processing
-            Responsável por:
+### 4.1.2 Post Processing
+
+#### Responsável por:
+
+```text
                 - motion blur
                 - bloom
                 - chromatic aberration
                 - exposure
                 - tone mapping
+```
 
-            Objetivo:
+#### Objetivo:
+
+```text
                 - sensação extrema de velocidade
                 - agressividade visual
+```
 
+### 4.1.3 Material System
 
-        4.1.3 Material System
-            Responsável por:
+#### Responsável por:
+
+```text
                 - paint shaders
                 - wet surfaces
                 - reflections
                 - metallic response
+```
 
+### 4.1.4 Reflection System
 
-        4.1.4 Reflection System
-            Responsável por:
+#### Responsável por:
+
+```text
                 - SSR
                 - cubemaps
                 - reflections dinâmicas
+```
 
-            Importante para:
+#### Importante para:
+
+```text
                 - carros
                 - chuva
                 - cidade noturna
+```
 
+### 4.1.5 Shadow System
 
-        4.1.5 Shadow System
-            Responsável por:
+#### Responsável por:
+
+```text
                 - sombras dinâmicas
                 - headlights shadows
                 - sombras urbanas
+```
 
+### 4.1.6 Environment Rendering
 
-        4.1.6 Environment Rendering
-            Responsável por:
+#### Responsável por:
+
+```text
                 - cidade
                 - skyline
                 - horizonte
                 - atmosfera urbana
+```
 
+</details>
 
+---
 
-    4.2 Camera Systems
+<details>
+<summary><strong>4.2 Camara Systems</strong></summary>
+
+---
+
+## Overview
+
+```text
         Responsável por:
             - framing
             - percepção de velocidade
             - cinematografia
             - feedback contextual
+```
 
+### 4.2.1 Gameplay Camera
 
-        4.2.1 Gameplay Camera
-            Responsável por:
+#### Responsável por:
+
+```text
                 - câmera principal
                 - estabilidade visual
                 - leitura de gameplay
+```
 
-            Deve:
+#### Deve:
+
+```text
                 - transmitir velocidade
                 - permanecer legível
+```
 
+### 4.2.2 Drift Camera
 
-        4.2.2 Drift Camera
-            Responsável por:
+#### Responsável por:
+
+```text
                 - ângulo cinematográfico
                 - amplificação visual do drift
                 - tracking lateral
+```
 
+### 4.2.3 Pursuit Camera
 
-        4.2.3 Pursuit Camera
-            Responsável por:
+#### Responsável por:
+
+```text
                 - sensação de perseguição
                 - tensão
                 - impacto
+```
 
-            Deve:
+#### Deve:
+
+```text
                 - parecer agressiva
                 - aumentar intensidade
+```
 
+### 4.2.4 Crash Camera
 
-        4.2.4 Crash Camera
-            Responsável por:
+#### Responsável por:
+
+```text
                 - slow motion
                 - impacto visual
                 - dramaticidade
+```
 
+### 4.2.5 Replay Camera
 
-        4.2.5 Replay Camera
-            Responsável por:
+#### Responsável por:
+
+```text
                 - câmeras cinematográficas
                 - cortes dinâmicos
                 - tracking inteligente
+```
 
+### 4.2.6 Photo Mode Camera
 
-        4.2.6 Photo Mode Camera
-            Responsável por:
+### Responsável por:
+
+```text
                 - câmera livre
                 - DOF
                 - composição visual
+```
 
+</details>
 
+---
 
-    4.3 UI/HUD
+<details>
+<summary><strong>4.3 UI/HUD</strong></summary>
+
+---
+
+## Overview
+
+```text
         Responsável por:
             - interface
             - feedback ao jogador
@@ -3974,103 +3954,156 @@ Return To World
             - legibilidade extrema
             - baixa distração
             - resposta rápida
+```
 
+### 4.3.1 Race HUD
 
-        4.3.1 Race HUD
-            Contém:
+#### Contém:
+
+```text
                 - velocidade
                 - posição
                 - minimap
                 - nitro
                 - checkpoints
+```
 
+### 4.3.2 Pursuit HUD
 
-        4.3.2 Pursuit HUD
-            Contém:
+#### Contém:
+
+```text
                 - heat
                 - status policial
                 - cooldown
                 - unidades ativas
+```
 
+### 4.3.3 Drift HUD
 
-        4.3.3 Drift HUD
-            Contém:
+#### Contém:
+
+```text
                 - combo
                 - multiplicador
                 - ângulo
                 - score
+```
 
+### 4.3.4 Navigation HUD
 
-        4.3.4 Navigation HUD
-            Responsável por:
+#### Responsável por:
+
+```text
                 - GPS
                 - rotas
                 - guidance dinâmica
+```
 
+### 4.3.5 Online HUD
+            
+#### Contém:
 
-        4.3.5 Online HUD
-            Contém:
+```text
                 - ping
                 - posição online
                 - players próximos
+```
 
+### 4.3.6 Garage UI
+            
+#### Responsável por:
 
-        4.3.6 Garage UI
-            Responsável por:
+```text
                 - tuning
                 - customização
                 - marketplace
+```
 
+</details>
 
+---
 
-    4.4 VFX
+<details>
+<summary><strong>4.4 VFX</strong></summary>
+
+---
+
+## Overview
+
+```text
         Responsável por:
             - partículas
             - fumaça
             - sparks
             - explosões visuais
             - feedback de velocidade
+```
 
+### 4.4.1 Nitro Effects
 
-        4.4.1 Nitro Effects
-            Responsável por:
+#### Responsável por:
+
+```text
                 - flames
                 - distortion
                 - boost visuals
+```
 
+### 4.4.2 Drift Effects
 
-        4.4.2 Drift Effects
-            Responsável por:
+#### Responsável por:
+
+```text
                 - fumaça
                 - skid marks
                 - partículas laterais
+```
 
+### 4.4.3 Weather Effects
 
-        4.4.3 Weather Effects
-            Responsável por:
+#### Responsável por:
+
+```text
                 - chuva
                 - água
                 - respingos
                 - neblina
+```
 
+### 4.4.4 Damage Effects
 
-        4.4.4 Damage Effects
-            Responsável por:
+#### Responsável por:
+
+```text
                 - debris
                 - sparks
                 - peças soltas
+```
 
+### 4.4.5 Environmental FX
 
-        4.4.5 Environmental FX
-            Responsável por:
+#### Responsável por:
+
+```text
                 - poeira
                 - lixo urbano
                 - vento
                 - folhas
+```
 
+</details>
 
+---
 
-    4.5 Audio Runtime
+<details>
+<summary><strong>4.5 Audio Runtime</strong></summary>
+
+---
+
+## Overview
+
+```text
         Responsável por:
             - áudio procedural
             - spatial audio
@@ -4081,48 +4114,72 @@ Return To World
             - sensação mecânica brutal
             - pressão sonora
             - intensidade emocional
+```
 
+### 4.5.1 Engine Audio
 
-        4.5.1 Engine Audio
-            Responsável por:
+#### Responsável por:
+
+```text
                 - RPM blending
                 - turbo
                 - transmission whine
                 - intake
                 - exhaust
+```
 
+### 4.5.2 Pursuit Audio
 
-        4.5.2 Pursuit Audio
-            Responsável por:
+#### Responsável por:
+
+```text
                 - sirenes
                 - rádio policial
                 - tensão sonora
+```
 
+### 4.5.3 Impact Audio
 
-        4.5.3 Impact Audio
-            Responsável por:
+#### Responsável por:
+
+```text
                 - colisões
                 - metal
                 - destruição
+```
 
+### 4.5.4 Environment Audio
 
-        4.5.4 Environment Audio
-            Responsável por:
+#### Responsável por:
+
+```text
                 - cidade
                 - túneis
                 - chuva
                 - crowd ambience
+```
 
+### 4.5.5 Spatial Audio
 
-        4.5.5 Spatial Audio
-            Responsável por:
+#### Responsável por:
+```text
                 - posicionamento 3D
                 - doppler
                 - distância sonora
+```
 
+</details>
 
+---
 
-    4.6 Music Director
+<details>
+<summary><strong>4.6 Music Director</strong></summary>
+
+---
+
+## Overview
+
+```text
         Responsável por:
             - soundtrack dinâmica
             - intensidade musical
@@ -4130,411 +4187,752 @@ Return To World
 
         Objetivo:
             - sincronizar emoção e gameplay
+```
 
+### 4.6.1 Dynamic Layers
 
-        4.6.1 Dynamic Layers
-            Responsável por:
+#### Responsável por:
+
+```text
                 - adicionar/remover camadas musicais
                 - escalada de intensidade
+```
 
+### 4.6.2 Pursuit Music
 
-        4.6.2 Pursuit Music
-            Responsável por:
+#### Responsável por:
+
+```text
                 - tensão policial
                 - escalada sonora
+```
 
+### 4.6.3 Race Music
 
-        4.6.3 Race Music
-            Responsável por:
+#### Responsável por:
+
+```text
                 - intensidade competitiva
                 - ritmo
+```
 
+### 4.6.4 Ambient Music
 
-        4.6.4 Ambient Music
-            Responsável por:
+#### Responsável por:
+
+```text
                 - exploração
                 - calmaria
                 - atmosfera urbana
+```
 
+</details>
 
+---
 
-    4.7 Cinematics
+<details>
+<summary><strong>4.7 Cinematics</strong></summary>
+
+---
+
+## Overview
+
+```text
         Responsável por:
             - storytelling visual
             - transições
             - introduções
             - apresentação de rivais
+```
 
+### 4.7.1 Intro Sequences
 
-        4.7.1 Intro Sequences
-            Responsável por:
+#### Responsável por:
+
+```text
                 - introdução de eventos
                 - establishing shots
                 - pacing inicial
+```
 
+### 4.7.2 Rival Introductions
 
-        4.7.2 Rival Introductions
-            Responsável por:
+#### Responsável por:
+
+```text
                 - apresentação de bosses
                 - crews
                 - rivalidades
+```
 
+### 4.7.3 Transition Cinematics
 
-        4.7.3 Transition Cinematics
-            Responsável por:
+#### Responsável por:
+
+```text
                 - transições suaves
                 - carregamentos mascarados
+```
 
+### 4.7.4 Victory Sequences
 
-        4.7.4 Victory Sequences
-            Responsável por:
+#### Responsável por:
+
+```text
                 - celebração
                 - recompensa emocional
+```
 
+</details>
 
+---
 
-    4.8 Photo Mode
+<details>
+<summary><strong>4.8 Photo Mode</strong></summary>
+
+---
+
+## Overview
+
+```text
         Responsável por:
             - captura visual
             - screenshots
             - composição cinematográfica
+```
 
+### 4.8.1 Filters
 
-        4.8.1 Filters
-            Responsável por:
+#### Responsável por:
+
+```text
                 - color grading
                 - LUTs
                 - estilos visuais
+```
 
+### 4.8.2 DOF Controls
 
-        4.8.2 DOF Controls
-            Responsável por:
+#### Responsável por:
+
+```text
                 - profundidade de campo
                 - foco cinematográfico
+```
 
+### 4.8.3 Pose Controls
 
-        4.8.3 Pose Controls
-            Responsável por:
+#### Responsável por:
+
+```text
                 - wheel angle
                 - headlights
                 - stance
+```
 
+</details>
 
+---
 
-    4.9 Accessibility
+<details>
+<summary><strong>4.9 Accessibility</strong></summary>
+
+---
+
+## Overview
+
+```text
         Responsável por:
             - acessibilidade
             - inclusão
             - legibilidade
+```
 
+### 4.9.1 Color Accessibility
 
-        4.9.1 Color Accessibility
-            Responsável por:
+#### Responsável por:
+
+```text
                 - colorblind modes
                 - contraste
+```
 
+### 4.9.2 Subtitle System
 
-        4.9.2 Subtitle System
-            Responsável por:
+#### Responsável por:
+
+```text
                 - legendas
                 - rádio
                 - diálogos
+```
 
+### 4.9.3 Input Accessibility
 
-        4.9.3 Input Accessibility
-            Responsável por:
+#### Responsável por:
+
+```text
                 - remapping
                 - assistências
                 - simplificação de inputs
+```
+
+</details>
+
+---
+
+</details>
+
+---
+
+<details>
+<summary><strong>5. Platform Layer</strong></summary>
+
+```text
+5. Platform Layer
+├── Graphics API Layer
+│   ├── DX12 Backend
+│   ├── Vulkan Backend
+│   ├── GPU Command System
+│   └── Shader Interface
+│
+├── Input Layer
+│   ├── Controller Support
+│   ├── Keyboard/Mouse
+│   ├── Steering Wheel Support
+│   └── Input Mapping
+│
+├── File IO
+│   ├── Async File Loading
+│   ├── Save File Access
+│   └── Package System
+│
+├── Threading
+│   ├── Worker Threads
+│   ├── Synchronization
+│   ├── Thread Affinity
+│   └── Fiber System
+│
+├── GPU Interface
+│   ├── VRAM Management
+│   ├── Texture Upload
+│   └── Buffer Management
+│
+├── Platform Abstraction
+│   ├── Windows Platform
+│   ├── Console Platform
+│   └── Platform Services
+│
+├── Network Sockets
+│   ├── UDP Runtime
+│   ├── TCP Runtime
+│   ├── Packet Serialization
+│   └── Network Encryption
+│
+└── Hardware APIs
+    ├── Haptic APIs
+    ├── Audio Device APIs
+    ├── Telemetry Interfaces
+    └── Performance Counters
+```
+### Responsibilities
+
+- Hardware abstraction
+- DX12/Vulkan
+- Threading
+- IO
+- Networking
+- GPU communication
 
 # 5. Platform Layer
-    Responsável por:
+
+>Responsavel pela ligação do jogo ao hardware do usuario.
+
+---
+
+## Responsável por:
+
+```text
         - abstração de hardware
         - integração com sistema operacional
         - APIs gráficas
         - threading de baixo nível
         - IO nativo
         - interface com GPU/CPU
+```
 
-    Objetivo:
+---
+
+## Objetivo:
+
+```text
         - fornecer base multiplataforma
         - esconder diferenças de hardware
         - garantir estabilidade
         - garantir performance baixa latência
+```
 
-    NÃO deve:
+---
+
+## NÃO deve:
+
+```text
         - conter gameplay
         - conter lógica de corrida
         - conter IA
         - conter rendering de alto nível
+```
 
+---
 
+<details>
+<summary><strong>5.1 Graphics API Layer</strong></summary>
 
-    5.1 Graphics API Layer
+---
+
+## Overview
+
+```text
         Responsável por:
             - comunicação direta com GPU
             - command buffers
             - pipelines gráficos
             - sincronização GPU
+```
 
+### 5.1.1 DX12 Backend
 
-        5.1.1 DX12 Backend
-            Responsável por:
+#### Responsável por:
+
+```text
                 - implementação DirectX 12
                 - command queues
                 - descriptor heaps
                 - resource barriers
+```
 
+### 5.1.2 Vulkan Backend
 
-        5.1.2 Vulkan Backend
-            Responsável por:
+#### Responsável por:
+
+```text
                 - implementação Vulkan
                 - multiplataforma
                 - baixo overhead
+```
 
+### 5.1.3 GPU Command System
 
-        5.1.3 GPU Command System
-            Responsável por:
+#### Responsável por:
+
+```text
                 - envio de comandos
                 - sincronização CPU/GPU
                 - command lists
+```
 
+### 5.1.4 Shader Interface
 
-        5.1.4 Shader Interface
-            Responsável por:
+#### Responsável por:
+
+```text
                 - compilação
                 - binding
                 - reflection
                 - cache de shaders
+```
 
+</details>
 
+---
 
-    5.2 Input Layer
+<details>
+<summary><strong>5.2 Input Layer</strong></summary>
+
+---
+
+## Overview
+
+```text
         Responsável por:
             - dispositivos de entrada
             - polling
             - abstração de controle
+```
 
+### 5.2.1 Controller Support
 
-        5.2.1 Controller Support
-            Responsável por:
+#### Responsável por:
+
+```text
                 - gamepads
                 - triggers analógicos
                 - force feedback
+```
 
+### 5.2.2 Keyboard/Mouse
 
-        5.2.2 Keyboard/Mouse
-            Responsável por:
+#### Responsável por:
+
+```text
                 - inputs digitais
                 - remapping
                 - mouse raw input
+```
 
+### 5.2.3 Steering Wheel Support
 
-        5.2.3 Steering Wheel Support
-            Responsável por:
+#### Responsável por:
+
+```text
                 - force feedback avançado
                 - rotação variável
                 - pedais
                 - H-shifter
+```
 
-            Compatibilidade:
+#### Compatibilidade:
+
+```text
                 - Logitech
                 - Thrustmaster
                 - Fanatec
+```
 
+### 5.2.4 Input Mapping
 
-        5.2.4 Input Mapping
-            Responsável por:
+#### Responsável por:
+
+```text
                 - bindings
                 - profiles
                 - presets
+```
 
+<details>
+<summary><strong>5.3 File IO</strong></summary>
 
+---
 
-    5.3 File IO
+## Overview
+
+```text
         Responsável por:
             - leitura/escrita
             - streaming de arquivos
             - acesso ao disco
+```
 
+### 5.3.1 Async File Loading
 
-        5.3.1 Async File Loading
-            Responsável por:
+#### Responsável por:
+
+```text
                 - leitura assíncrona
                 - prefetching
                 - streaming contínuo
+```
 
+### 5.3.2 Save File Access
 
-        5.3.2 Save File Access
-            Responsável por:
+#### Responsável por:
+
+```text
                 - leitura de save
                 - escrita segura
                 - backup
+```
 
+### 5.3.3 Package System
 
-        5.3.3 Package System
-            Responsável por:
+#### Responsável por:
+
+```text
                 - containers de assets
                 - arquivos compactados
                 - lookup rápido
+```
 
+</details>
 
+---
 
-    5.4 Threading
+<details>
+<summary><strong>5.4 Threading</strong></summary>
+
+---
+
+## Overview
+
+```text
         Responsável por:
             - gerenciamento de threads
             - sincronização
             - paralelismo
+```
 
+### 5.4.1 Worker Threads
 
-        5.4.1 Worker Threads
-            Responsável por:
+#### Responsável por:
+
+```text
                 - jobs paralelos
                 - processamento background
+```
 
+### 5.4.2 Synchronization
 
-        5.4.2 Synchronization
-            Responsável por:
+#### Responsável por:
+
+```text
                 - mutexes
                 - semaphores
                 - barriers
                 - locks
+```
 
+### 5.4.3 Thread Affinity
 
-        5.4.3 Thread Affinity
-            Responsável por:
+#### Responsável por:
+
+```text
                 - distribuição por core
                 - otimização de cache
+```
 
+### 5.4.4 Fiber System
 
-        5.4.4 Fiber System
-            Responsável por:
+#### Responsável por:
+
+```text
                 - task switching leve
                 - jobs de baixa latência
+```
 
+<details>
+<summary><strong>5.5 GPU Interface</strong></summary>
 
+---
 
-    5.5 GPU Interface
+## Overview
+
+```text
         Responsável por:
             - gerenciamento de recursos gráficos
             - memória GPU
             - upload/download
+```
 
+### 5.5.1 VRAM Management
 
-        5.5.1 VRAM Management
-            Responsável por:
+#### Responsável por:
+
+```text
                 - budget de memória
                 - streaming GPU
+```
 
+### 5.5.2 Texture Upload
 
-        5.5.2 Texture Upload
-            Responsável por:
+#### Responsável por:
+
+```text
                 - upload assíncrono
                 - mip streaming
+```
 
+### 5.5.3 Buffer Management
 
-        5.5.3 Buffer Management
-            Responsável por:
+#### Responsável por:
+
+```text
                 - vertex buffers
                 - index buffers
                 - constant buffers
+```
 
+</details>
 
+---
 
-    5.6 Platform Abstraction
+<details>
+<summary><strong>5.6 Platform Abstraction</strong></summary>
+
+---
+
+## Overview
+
+```text
         Responsável por:
             - diferenças entre plataformas
             - APIs específicas
             - compatibilidade
+```
 
+### 5.6.1 Windows Platform
 
-        5.6.1 Windows Platform
-            Responsável por:
+#### Responsável por:
+
+```text
                 - Win32
                 - integração Windows
                 - APIs específicas
+```
 
+### 5.6.2 Console Platform
 
-        5.6.2 Console Platform
-            Responsável por:
+#### Responsável por:
+
+```text
                 - APIs de console
                 - otimizações específicas
+```
 
+### 5.6.3 Platform Services
 
-        5.6.3 Platform Services
-            Responsável por:
+#### Responsável por:
+
+```text
                 - achievements
                 - cloud saves
                 - friends
                 - invites
+```
 
+</details>
 
+---
 
-    5.7 Network Sockets
+<details>
+<summary><strong>5.7 Network Sockets</strong></summary>
+
+---
+
+## Overview
+
+```text
         Responsável por:
             - comunicação de rede
             - sockets
             - transporte de pacotes
+```
 
+### 5.7.1 UDP Runtime
 
-        5.7.1 UDP Runtime
-            Responsável por:
+#### Responsável por:
+
+```text
                 - gameplay networking
                 - baixa latência
+```
 
+### 5.7.2 TCP Runtime
 
-        5.7.2 TCP Runtime
-            Responsável por:
+#### Responsável por:
+
+```text
                 - serviços confiáveis
                 - autenticação
                 - matchmaking
+```
 
+### 5.7.3 Packet Serialization
 
-        5.7.3 Packet Serialization
-            Responsável por:
+#### Responsável por:
+
+```text
                 - compactação
                 - serialização binária
                 - redução de bandwidth
+```
 
+### 5.7.4 Network Encryption
 
-        5.7.4 Network Encryption
-            Responsável por:
+#### Responsável por:
+
+```text
                 - segurança
                 - proteção de sessão
+```
 
+</details>
 
+---
 
-    5.8 Hardware APIs
+<details>
+<summary><strong>5.8 Hardware APIs</strong></summary>
+
+---
+
+## Overview
+
+```text
         Responsável por:
             - integração com hardware específico
             - APIs externas
             - recursos nativos
+```
 
+### 5.8.1 Haptic APIs
 
-        5.8.1 Haptic APIs
-            Responsável por:
+#### Responsável por:
+
+```text
                 - vibração
                 - feedback tátil
                 - adaptive triggers
+```
 
+### 5.8.2 Audio Device APIs
 
-        5.8.2 Audio Device APIs
-            Responsável por:
+#### Responsável por:
+
+```text
                 - dispositivos de áudio
                 - output switching
                 - spatial hardware
+```
 
+### 5.8.3 Telemetry Interfaces
 
-        5.8.3 Telemetry Interfaces
-            Responsável por:
+#### Responsável por:
+
+```text
                 - wheel telemetry
                 - dashboards externos
                 - APIs de sim racing
+```
 
+### 5.8.4 Performance Counters
 
-        5.8.4 Performance Counters
-            Responsável por:
+#### Responsável por:
+
+```text
                 - métricas hardware
                 - profiling baixo nível
                 - monitoramento térmico
 ```
+
+---
+
+</details>
+
+---
+# Technology Stack
+
+| Area | Technology |
+|---|---|
+| Engine | Unreal Engine 5 |
+| Language | C++ |
+| Rendering | DX12 + Vulkan |
+| Physics | Chaos Modified |
+| Audio | Wwise |
+| UI | UMG Custom |
+| Networking | EOS / PlayFab |
+| ECS | Custom Hybrid ECS |
+| Profiling | Tracy + PIX + RenderDoc |
+| Build System | Unreal Build Tool |
+| Source Control | Perforce |
+| CI/CD | Jenkins + GitHub Actions |
+
+---
