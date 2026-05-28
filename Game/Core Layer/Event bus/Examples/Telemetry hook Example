@@ -1,0 +1,19 @@
+EventBus Bus;
+
+EventListener TelemetryListener;
+
+TelemetryListener.ListenerID = 1;
+
+TelemetryListener.Callback =
+[](const Event& EventData)
+{
+    printf(
+        "[Telemetry] Event: %s\n",
+        EventData.Name.c_str()
+    );
+};
+
+Bus.Subscribe(
+    EventNames::OnRaceStart,
+    TelemetryListener
+);

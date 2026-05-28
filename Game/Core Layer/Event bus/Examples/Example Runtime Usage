@@ -1,0 +1,16 @@
+EventBus Bus;
+
+Event RaceStartEvent;
+
+RaceStartEvent.Name =
+    EventNames::OnRaceStart;
+
+RaceStartEvent.Priority =
+    EEventPriority::Critical;
+
+RaceStartEvent.Type =
+    EEventType::Global;
+
+Bus.Publish(RaceStartEvent);
+
+Bus.ProcessEvents();

@@ -1,0 +1,32 @@
+#include "ECSWorld.h"
+#include "ComponentStorage.h"
+#include "SystemScheduler.h"
+#include "VehicleMovementSystem.h"
+#include "NitroSystem.h"
+
+ECSWorld World;
+
+ComponentStorage Components;
+
+SystemScheduler Scheduler;
+
+Scheduler.RegisterSystem(
+    std::make_shared<VehicleMovementSystem>()
+);
+
+Scheduler.RegisterSystem(
+    std::make_shared<NitroSystem>()
+);
+
+EntityID Car = World.CreateEntity();
+
+TransformComponent Transform;
+VelocityComponent Velocity;
+NitroComponent Nitro;
+
+Components.TransformComponents.Insert(Car, Transform);
+Components.VelocityComponents.Insert(Car, Velocity);
+Components.NitroComponents.Insert(Car, Nitro);
+
+Scheduler.Execute(World, Components, 0.016f);
+
