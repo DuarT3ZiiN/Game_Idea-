@@ -1,11 +1,42 @@
 # Engine Architecture
 
+```text
+Arquitetura de jogo moderno open-world baseado em:
+- Need for Speed Underground 2
+- Most Wanted
+- Carbon
+- Forza Horizon
+```
+
+---
+
+# Fluxo de Dados
+
+```mermaid
+graph LR
+
+Input[Input Layer]
+    --> Game[Game Layer]
+
+Game
+    --> Simulation[Simulation Layer]
+
+Simulation
+    --> Core[Core Layer]
+
+Core
+    --> Presentation[Presentation Layer]
+
+Presentation
+    --> Platform[Platform Layer]
+```
+
 ---
 
 # Layers
 
 <details>
-<summary><strong>1. Game Layer</strong></summary>
+<summary><strong>🎮 Game Layer</strong></summary>
 
 ```text
 1. Game Layer
@@ -2125,7 +2156,7 @@ Return To World
 ---
 
 <details>
-<summary><strong>2. Simulation Layer</strong></summary>
+<summary><strong>🧠 Simulation Layer</strong></summary>
 
 ```text
 2. Simulation Layer
@@ -2730,7 +2761,7 @@ Return To World
 ---
 
 <details>
-<summary><strong>3. Core Layer</strong></summary>
+<summary><strong>⚙️ Core Layer</strong></summary>
 
 ```text
 1. Core Layer
@@ -3616,7 +3647,7 @@ Return To World
 ---
 
 <details>
-<summary><strong>4. Presentation Layer</strong></summary>
+<summary><strong>🎨 Presentation Layer</strong></summary>
 
 ```text
 4. Presentation Layer
@@ -4386,7 +4417,7 @@ Return To World
 ---
 
 <details>
-<summary><strong>5. Platform Layer</strong></summary>
+<summary><strong>💻 Platform Layer</strong></summary>
 
 ```text
 5. Platform Layer
@@ -4609,6 +4640,10 @@ Return To World
                 - presets
 ```
 
+</details>
+
+---
+
 <details>
 <summary><strong>5.3 File IO</strong></summary>
 
@@ -4708,6 +4743,10 @@ Return To World
                 - task switching leve
                 - jobs de baixa latência
 ```
+
+</details>
+
+---
 
 <details>
 <summary><strong>5.5 GPU Interface</strong></summary>
@@ -4913,6 +4952,8 @@ Return To World
                 - monitoramento térmico
 ```
 
+</details>
+
 ---
 
 </details>
@@ -4920,19 +4961,20 @@ Return To World
 ---
 # Technology Stack
 
-| Area | Technology |
-|---|---|
-| Engine | Unreal Engine 5 |
-| Language | C++ |
-| Rendering | DX12 + Vulkan |
-| Physics | Chaos Modified |
-| Audio | Wwise |
-| UI | UMG Custom |
-| Networking | EOS / PlayFab |
-| ECS | Custom Hybrid ECS |
-| Profiling | Tracy + PIX + RenderDoc |
-| Build System | Unreal Build Tool |
-| Source Control | Perforce |
-| CI/CD | Jenkins + GitHub Actions |
+
+| Área | Tecnologia | Finalidade |
+|---|---|---|
+| Engine | Unreal Engine 5 | Base principal da engine |
+| Linguagem | C++ | Gameplay e runtime |
+| Rendering | DX12 + Vulkan | Renderização moderna |
+| Physics | Chaos Modified | Física arcade customizada |
+| Audio | Wwise | Áudio dinâmico |
+| UI | UMG Custom | Interface e HUD |
+| Networking | EOS / PlayFab | Multiplayer e backend |
+| ECS | Custom Hybrid ECS | Arquitetura runtime |
+| Profiling | Tracy + PIX + RenderDoc | Diagnóstico e profiling |
+| Build System | Unreal Build Tool | Build pipeline |
+| Source Control | Perforce | Controle de versão |
+| CI/CD | Jenkins + GitHub Actions | Automação e integração contínua |
 
 ---
