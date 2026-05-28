@@ -15,10 +15,7 @@ Arquitetura de jogo moderno open-world baseado em:
 ```mermaid
 graph LR
 
-Input[Input Layer]
-    --> Game[Game Layer]
-
-Game
+Game[Game Layer]
     --> Simulation[Simulation Layer]
 
 Simulation
@@ -57,13 +54,6 @@ Presentation
 │   │   ├── Canyon Rules
 │   │   ├── Time Attack Rules
 │   │   └── Tollbooth Rules
-│   │
-│   ├── Scoring
-│   │   ├── Position Scoring
-│   │   ├── Drift Scoring
-│   │   ├── Style Scoring
-│   │   ├── Time Scoring
-│   │   └── Combo System
 │   │
 │   ├── AI
 │   │   ├── Race Director
@@ -404,7 +394,6 @@ Return To World
 ```text
                 - definir comportamento de cada modo
                 - validar regras
-                - scoring base
                 - restrições de gameplay
 ```
 
@@ -459,76 +448,777 @@ Return To World
 
 ### 1.1.2.3 Drift Rules
 
-#### NÃO mede:
+> Baseado diretamente na filosofia do Drift do Need for Speed Pro Street.
+
+#### Overview
+
+---
 
 ```text
-                - posição
+Filosofia Central
+
+O drift do Pro Street era baseado em:
+
+- entradas agressivas
+- peso perceptível
+- velocidade alta
+- controle parcial
+- sensação de risco
+- momentum contínuo
 ```
 
-#### Mede:
+---
 
 ```text
-                    - ângulo
-                    - velocidade lateral
-                    - continuidade
-                    - combos
+Sensação desejada
+
+O jogador deve sentir:
+
+- carro pesado
+- suspensão carregando peso
+- traseira tentando escapar
+- necessidade de correção constante
+- drift extremamente rápido
 ```
 
-#### Responsável por:
+---
+
+#### Estrutura Runtime
 
 ```text
-                    - combo runtime
-                    - drift chaining
-                    - multiplier logic
-                    - reset conditions
+Drift Rules
+├── Drift Detection
+├── Momentum Runtime
+├── Weight Transfer Runtime
+├── Slip Angle Runtime
+├── Drift State Runtime
+├── Combo Runtime
+├── Transition Runtime
+├── Speed Preservation
+├── Drift Assist Runtime
+├── Stability Runtime
+├── Wall Proximity Runtime
+├── Style Runtime
+├── Camera Director
+├── Audio Runtime
+└── Replay Hooks
 ```
 
-#### Drift bom:
+---
+
+#### Runtime Pipeline
 
 ```text
-                    - parece técnico
-                    - permanece controlável
-                    - favorece flow
+Approach
+    ↓
+Weight Transfer
+    ↓
+Drift Entry
+    ↓
+Slip Stabilization
+    ↓
+Combo Runtime
+    ↓
+Transition
+    ↓
+Momentum Recovery
+    ↓
+Combo Finish
+    ↓
+Score Validation
 ```
+
+---
+
+### 1.1.2.3.1 Core Philosophy
+
+#### O drift é construído em cima de:
+
+| Sistema | Prioridade |
+|---|---|
+| Momentum | ALTÍSSIMA |
+| Weight Transfer | ALTÍSSIMA |
+| Slip Control | ALTÍSSIMA |
+| Steering Precision | ALTA |
+| Speed Preservation | ALTA |
+| Style | MÉDIA |
+
+---
+
+### 1.1.2.3.2 Drift Detection Logic
+
+#### Objetivo
+
+Validar:
+- drift legítimo
+- perda controlada de tração
+- entrada intencional
+
+---
+
+#### Inputs principais
+
+| Input | Uso |
+|---|---|
+| Steering Angle | direção |
+| Yaw Rate | rotação |
+| Slip Ratio | perda de tração |
+| Lateral Velocity | movimento lateral |
+| Weight Transfer | carga lateral |
+| Throttle | manutenção |
+| Brake | initiation |
+
+---
+
+### 1.1.2.3.3 Entry Validation
+
+```text
+IF
+
+Speed > MinimumSpeed
+AND
+SlipAngle > Threshold
+AND
+LateralVelocity > MinimumLateral
+AND
+RearSlipRatio > MinimumSlip
+
+THEN
+
+ENTER DRIFT_ENTRY
+```
+
+---
+
+### 1.1.2.3.5 Mede
+
+```text
+- lateral load
+- suspension compression
+- braking transfer
+- throttle transfer
+- inertia
+```
+
+---
+
+### 1.1.2.3.6 Influencia
+
+| Situação | Resultado |
+|---|---|
+| Transferência suave | estabilidade |
+| Transferência agressiva | ângulo maior |
+| Transferência excessiva | spinout |
+| Transferência lenta | drift morto |
+
+---
+
+### 1.1.2.3.7 Drift Entry Logic
+
+#### Objetivo
+
+Avaliar:
+- agressividade
+- velocidade
+- comprometimento
+- initiation quality
+
+---
+
+### 1.1.2.3.8 Tipos de entrada
+
+| Tipo | Característica |
+|---|---|
+| Feint | transferência rápida |
+| Braking Drift | peso frontal |
+| Power Over | torque excessivo |
+| Clutch Kick | destabilização brusca |
+
+---
+
+### 1.1.2.3.9 Entry Quality
+
+#### Mede
+
+```text
+- velocidade
+- ângulo inicial
+- estabilidade
+- fluidez
+- controle
+```
+
+---
+
+### 1.1.2.3.10 Drift Active Runtime
+
+#### Objetivo
+
+Controlar:
+- manutenção do drift
+- estabilidade
+- momentum
+- chaining
+
+---
+
+#### Mede
+
+```text
+- slip angle
+- speed
+- yaw velocity
+- throttle modulation
+- steering correction
+- line quality
+```
+
+---
+
+### 1.1.2.3.11 Momentum Runtime
+
+---
+
+#### Mede
+
+```text
+- velocidade média
+- velocidade lateral
+- perda de energia
+- continuidade
+```
+
+---
+
+#### Penaliza
+
+```text
+- excesso de correção
+- desaceleração excessiva
+- drift “travado”
+- quebra de flow
+```
+
+---
+
+#### Reward Logic
+
+```text
+HighSpeed
++
+HighAngle
++
+SmoothTransition
++
+StableMomentum
+=
+Massive Score
+```
+
+---
+
+### 1.1.2.3.12 Combo Runtime
+
+---
+
+#### Combo inicia
+
+```text
+ValidDrift == TRUE
+```
+
+---
+
+#### Combo continua
+
+```text
+MomentumMaintained == TRUE
+AND
+DriftAngle > Minimum
+AND
+Speed > Minimum
+```
+
+---
+
+#### Combo quebra
+
+```text
+- grip recovery excessiva
+- spinout
+- wall impact
+- ângulo insuficiente
+- velocidade muito baixa
+```
+
+---
+
+### 1.1.2.3.13 Transition Runtime
+
+#### Mede
+
+```text
+- velocidade da troca
+- estabilidade
+- fluidez
+- continuidade do momentum
+```
+
+---
+
+#### Transição perfeita
+
+```text
+- perda mínima de velocidade
+- troca rápida
+- controle mantido
+- ângulo consistente
+```
+
+---
+
+### 1.1.2.3.14 Wall Proximity Runtime
+
+#### Responsável por
+
+```text
+- proximity score
+- clipping zones
+- near misses
+- wall pressure
+```
+
+---
+
+#### Wall Logic
+
+#### Contato leve
+
+```text
+- reduz multiplier
+- reduz style
+- mantém drift parcialmente
+```
+
+---
+
+#### Contato forte
+
+```text
+- combo break
+- momentum collapse
+- score penalty
+```
+
+---
+
+### 1.1.2.3.15 Style Runtime
+
+#### Mede
+
+```text
+- smoke density
+- sustained angle
+- transition aggression
+- speed commitment
+- proximity
+```
+
+---
+
+### 1.1.2.3.16 Camera Director
+
+#### Responsável por
+
+```text
+- câmera baixa
+- FOV agressivo
+- shake em transitions
+- motion blur forte
+- sensação de velocidade extrema
+```
+
+---
+
+### 1.1.2.3.17 Audio Runtime
+
+#### Responsável por
+
+```text
+- tire scream
+- transmission load
+- turbo flutter
+- engine strain
+- backfire
+- crowd reaction
+```
+
+---
+
+#### Métricas Importantes
+
+| Métrica | Objetivo |
+|---|---|
+| Drift Angle | agressividade |
+| Drift Speed | risco |
+| Momentum | flow |
+| Transition Quality | técnica |
+| Stability | controle |
+| Proximity | coragem |
+| Combo Duration | consistência |
+
+---
 
 ### 1.1.2.4 Drag Rules
 
-#### Base:
+> Inspirado diretamente no Drag do Need for Speed Pro Street.
+
+#### Objetivo
+
+O modo Drag deve transmitir:
 
 ```text
-                    - inspirado em
-                      -PRO STREET
+- risco extremo
+- velocidade absurda
+- precisão mecânica
+- leitura rápida
+- punição severa
+- feedback audiovisual agressivo
 ```
 
-#### Responsável por:
+---
+
+#### Estrutura Runtime
 
 ```text
-                    - launch timing
-                    - burnout state
-                    - lane assist
-                    - shift timing
-                    - wheelspin
-                    - trap speed
-                    - nitro timing
+Drag Rules
+├── Burnout Runtime
+├── Staging System
+├── Launch Controller
+├── Shift System
+├── Lane System
+├── Wheelspin System
+├── Nitro Runtime
+├── Collision Punishment
+├── Speed Trap Logic
+├── AI Drag Logic
+├── Camera Director
+├── Audio Intensity
+└── Crash Handler
 ```
 
-#### Precisa:
+---
+
+#### Responsável por
 
 ```text
-                    - sensação brutal de potência
-                    - feedback visual forte
-                    - câmera agressiva
-                    - timing extremamente preciso
+- launch timing
+- burnout control
+- tire temperature
+- staging validation
+- reaction time
+- gear shifting
+- wheelspin simulation
+- lane discipline
+- nitro timing
+- trap speed
+- finish validation
+- drag AI pacing
 ```
 
-#### Estagios:
+---
+
+#### NÃO deve
 
 ```text
-                    - Burnout
-                    - Stage
-                    - Launch
-                    - Shift
-                    - Finish
+- utilizar posicionamento tradicional de corrida
+- usar rubber banding agressivo
+- permitir steering arcade exagerado
+- permitir correções irreais em alta velocidade
+```
+
+---
+
+#### Filosofia de Gameplay
+
+##### O jogador deve sentir:
+
+```text
+- vulnerabilidade
+- potência descontrolada
+- tensão constante
+- risco de destruição
+- necessidade de precisão absoluta
+```
+
+---
+
+#### Estrutura da Corrida
+
+```text
+Burnout
+    ↓
+Stage
+    ↓
+Countdown
+    ↓
+Launch
+    ↓
+Shift Sequence
+    ↓
+Nitro Windows
+    ↓
+Trap Speed
+    ↓
+Finish
+```
+
+---
+
+### 1.1.2.4.1 Burnout Runtime
+
+#### Responsável por
+
+```text
+- aquecimento dos pneus
+- geração de fumaça
+- controle de temperatura
+- grip temporário
+- feedback audiovisual
+```
+
+#### Variáveis
+
+| Variável | Efeito |
+|---|---|
+| Tire Temperature | aumenta tração |
+| Burnout Duration | influencia grip |
+| Overheat | reduz eficiência |
+| Surface Condition | altera resultado |
+
+---
+
+### 1.1.2.4.2 Staging System
+
+#### Responsável por
+
+```text
+- alinhamento no grid
+- validação de posição
+- controle pré-largada
+- sincronização de launch
+```
+
+#### Estados
+
+```text
+PRE_STAGE
+STAGED
+READY
+INVALID
+```
+
+---
+
+### 1.1.2.4.3 Launch Controller
+
+#### Responsável por
+
+```text
+- RPM ideal
+- clutch simulation
+- traction check
+- launch quality
+- wheelspin trigger
+```
+
+#### Resultado da largada
+
+| Qualidade | Resultado |
+|---|---|
+| Perfect Launch | aceleração máxima |
+| Good Launch | pequena perda |
+| Bad Launch | wheelspin |
+| OverRev | perda severa |
+
+---
+
+### 1.1.2.4.4 Shift System
+
+#### Inspirado diretamente no Pro Street
+
+O shift deve ser:
+- extremamente rápido
+- altamente técnico
+- brutalmente punitivo
+
+---
+
+#### Responsável por
+
+```text
+- shift windows
+- perfect shifts
+- miss shifts
+- overrev penalties
+- transmission stress
+```
+
+#### Estados
+
+```text
+PERFECT_SHIFT
+GOOD_SHIFT
+EARLY_SHIFT
+LATE_SHIFT
+MISSHIFT
+```
+
+---
+
+### 1.1.2.4.5 Lane System
+
+#### Responsável por
+
+```text
+- lane validation
+- collision detection
+- steering limitation
+- drift suppression
+```
+
+#### Filosofia
+
+O jogador:
+- NÃO deve “dirigir normalmente”
+- deve sobreviver à aceleração
+
+---
+
+### 1.1.2.4.6 Nitro Runtime
+
+#### Responsável por
+
+```text
+- nitro windows
+- pressure boosts
+- traction destabilization
+- timing rewards
+```
+
+#### Regras
+
+```text
+- nitro cedo demais causa wheelspin
+- nitro tardio reduz eficiência
+- nitro perfeito gera boost máximo
+```
+
+---
+
+### 1.1.2.4.7 Speed Trap Logic
+
+#### Responsável por
+
+```text
+- velocidade final
+- velocidade média
+- trap records
+- sector analysis
+```
+
+---
+
+### 1.1.2.4.8 AI Drag Logic
+
+#### IA deve:
+
+```text
+- errar shifts ocasionalmente
+- usar nitro estrategicamente
+- defender lane
+- reagir ao launch
+- possuir personalidade mecânica
+```
+
+#### Arquétipos
+
+| Perfil | Característica |
+|---|---|
+| Precision Driver | shifts perfeitos |
+| Aggressive Driver | launch agressivo |
+| Nitro Specialist | nitro otimizado |
+| Risk Driver | alta chance de crash |
+
+---
+
+### 1.1.2.4.9 Camera Director
+
+#### Responsável por
+
+```text
+- câmera agressiva
+- shake em shifts
+- FOV dinâmico
+- sensação de velocidade
+- impacto cinematográfico
+```
+
+---
+
+### 1.1.2.4.9 Audio Intensity
+
+#### Responsável por
+
+```text
+- transmissão
+- turbo flutter
+- backfire
+- tire scream
+- nitro pressure
+- RPM stress
+```
+
+---
+
+#### Sensação desejada
+
+```text
+Need for Speed Pro Street:
+não parece uma corrida comum.
+
+Parece uma máquina tentando matar o piloto.
+```
+
+---
+
+#### Métricas importantes
+
+| Métrica | Objetivo |
+|---|---|
+| Reaction Time | precisão |
+| Shift Accuracy | skill |
+| Wheelspin Ratio | controle |
+| Trap Speed | performance |
+| Nitro Efficiency | otimização |
+| Lane Stability | domínio |
+
+---
+
+#### Pacing Ideal
+
+```text
+Pré-largada:
+tensão psicológica
+
+Launch:
+explosão instantânea
+
+Mid-run:
+controle caótico
+
+Final:
+sobrevivência em alta velocidade
 ```
 
 ### 1.1.2.5 Canyon Rules
@@ -592,41 +1282,7 @@ Return To World
 
 ---
 
-### 1.1.3 Scoring
-
-#### Responsável por:
-
-```text
-                - pontuação
-                - rankings
-                - multipliers
-                - performance metrics
-```
-
-### 1.1.3.1 Position Scoring
-
-#### Mede:
-
-```text
-                    - posição final
-                    - ultrapassagens
-                    - consistência
-```
-
-### 1.1.3.2 Drift Scoring
-
-#### Mede:
-
-```text
-                    - ângulo
-                    - velocidade
-                    - combo
-                    - continuidade
-```
-
----
-
-### 1.1.4 AI
+### 1.1.3 AI
 
 #### Responsável por:
 
@@ -637,7 +1293,7 @@ Return To World
                 - espetáculo cinematográfico
 ```
 
-### 1.1.4.1 Race Director
+### 1.1.3.1 Race Director
 >Esse é o “cérebro cinematográfico”.
 
 #### Controla:
@@ -659,7 +1315,7 @@ Return To World
                     - controlar física
 ```
 
-### 1.1.4.2 Rubber Banding
+### 1.1.3.2 Rubber Banding
 
 #### NÃO fazer:
 
@@ -676,7 +1332,7 @@ Return To World
                     - recuperação cinematográfica
 ```
 
-### 1.1.4.3 Rival Behaviors
+### 1.1.3.3 Rival Behaviors
 
 #### Responsável por:
 
@@ -688,7 +1344,7 @@ Return To World
                     - defesa de posição
 ```
 
-### 1.1.4.4 Tactical Driving
+### 1.1.3.4 Tactical Driving
 
 #### Responsável por:
 
@@ -700,7 +1356,7 @@ Return To World
                     - pressão lateral
 ```
 
-### 1.1.4.5 Aggression Profiles
+### 1.1.3.5 Aggression Profiles
 
 #### Perfis:
 
@@ -714,7 +1370,7 @@ Return To World
 ```
 
 
-### 1.1.5 Crew Systems
+### 1.1.4 Crew Systems
 
 #### Responsável por:
 
@@ -725,7 +1381,7 @@ Return To World
                 - narrativa emergente
 ```
 
-### 1.1.5.1 Tactical Roles
+### 1.1.4.1 Tactical Roles
 
 #### Papéis:
 
@@ -736,7 +1392,7 @@ Return To World
                     - Aggressor
 ```
 
-### 1.1.5.2 Team Coordination
+### 1.1.4.2 Team Coordination
 
 #### Responsável por:
 
@@ -746,7 +1402,7 @@ Return To World
                     - troca dinâmica de funções
 ```
 
-### 1.1.5.3 Communication
+### 1.1.4.3 Communication
 
 #### Responsável por:
 
@@ -757,7 +1413,7 @@ Return To World
                     - informações de tráfego/polícia
 ```
 
-### 1.1.5.4 Assist Logic
+### 1.1.4.4 Assist Logic
 
 #### Responsável por:
 
@@ -768,7 +1424,7 @@ Return To World
                     - interromper rivais
 ```
 
-### 1.1.5.5 Rival Crews
+### 1.1.4.5 Rival Crews
 
 #### Responsável por:
 
@@ -778,7 +1434,7 @@ Return To World
                     - rivalidades persistentes
 ```
 
-### 1.1.5.6 Personality Profiles
+### 1.1.4.6 Personality Profiles
 
 #### Mede:
 
@@ -794,7 +1450,7 @@ Return To World
 ---
 
 
-### 1.1.6 Spawn Systems
+### 1.1.5 Spawn Systems
 
 #### Responsável por:
 
@@ -806,7 +1462,7 @@ Return To World
                 - prevenção de colisões de spawn
 ```
 
-### 1.1.6.1 Grid Spawn
+### 1.1.5.1 Grid Spawn
 
 #### Responsável por:
 
@@ -825,7 +1481,7 @@ Return To World
                     - respeitar largura da pista
 ```
 
-### 1.1.6.2 Recovery Spawn
+### 1.1.5.2 Recovery Spawn
 
 #### Responsável por:
 
@@ -843,7 +1499,7 @@ Return To World
                     - quebrar flow da corrida
 ```
 
-### 1.1.6.3 Dynamic Spawn
+### 1.1.5.3 Dynamic Spawn
 
 #### Responsável por:
 
@@ -862,7 +1518,7 @@ Return To World
                     - respeitar tráfego
 ```
 
-### 1.1.6.4 Streaming Validation
+### 1.1.5.4 Streaming Validation
 
 #### Responsável por:
 
@@ -875,7 +1531,7 @@ Return To World
 ---
 
 
-### 1.1.7 Checkpoint Systems
+### 1.1.6 Checkpoint Systems
 
 #### Responsável por:
 
@@ -887,7 +1543,7 @@ Return To World
                 - controle de atalhos
 ```
 
-### 1.1.7.1 Spline Progression
+### 1.1.6.1 Spline Progression
 
 #### Mede:
 
@@ -903,7 +1559,7 @@ Return To World
                     - apenas checkpoint count
 ```
 
-### 1.1.7.2 Checkpoint Validation
+### 1.1.6.2 Checkpoint Validation
 
 #### Responsável por:
 
@@ -914,7 +1570,7 @@ Return To World
                     - anti-skip
 ```
 
-### 1.1.7.3 Shortcut Validation
+### 1.1.6.3 Shortcut Validation
 
 #### Responsável por:
 
@@ -924,7 +1580,7 @@ Return To World
                     - validar áreas opcionais
 ```
 
-### 1.1.7.4 Anti-Cheat Logic
+### 1.1.6.4 Anti-Cheat Logic
 
 #### Detecta:
 
@@ -938,7 +1594,7 @@ Return To World
 ---
 
 
-### 1.1.8 Integrations
+### 1.1.7 Integrations
 
 #### Responsável por:
 
@@ -948,7 +1604,7 @@ Return To World
                 - adapters de runtime
 ```
 
-### 1.1.8.1 Traffic Adapter
+### 1.1.7.1 Traffic Adapter
 
 #### Responsável por:
 
@@ -958,7 +1614,7 @@ Return To World
                     - evitar caos excessivo
 ```
 
-### 1.1.8.2 Police Adapter
+### 1.1.7.2 Police Adapter
 
 #### Responsável por:
 
@@ -969,7 +1625,7 @@ Return To World
                     - sincronizar heat
 ```
 
-### 1.1.8.3 Economy Adapter
+### 1.1.7.3 Economy Adapter
 
 #### Responsável por:
 
@@ -980,7 +1636,7 @@ Return To World
                     - multas/danos
 ```
 
-### 1.1.8.4 Mission Adapter
+### 1.1.7.4 Mission Adapter
 
 #### Responsável por:
 
@@ -993,7 +1649,7 @@ Return To World
 ---
 
 
-### 1.1.9 Rewards
+### 1.1.8 Rewards
 
 #### Responsável por:
 
@@ -1004,7 +1660,7 @@ Return To World
                 - scaling de recompensa
 ```
 
-### 1.1.9.1 Cash Rewards
+### 1.1.8.1 Cash Rewards
 
 #### Baseado em:
 
@@ -1016,7 +1672,7 @@ Return To World
                     - style
 ```
 
-### 1.1.9.2 Reputation Rewards
+### 1.1.8.2 Reputation Rewards
 
 #### Mede:
 
@@ -1027,7 +1683,7 @@ Return To World
                     - vitórias importantes
 ```
 
-### 1.1.9.3 Crew Reputation
+### 1.1.8.3 Crew Reputation
 
 #### Responsável por:
 
@@ -1037,7 +1693,7 @@ Return To World
                     - rivalidades
 ```
 
-### 1.1.9.4 Unlock System
+### 1.1.8.4 Unlock System
 
 #### Responsável por:
 
@@ -1051,7 +1707,7 @@ Return To World
 
 ---
 
-### 1.1.10 Telemetry
+### 1.1.9 Telemetry
 
 #### Responsável por:
 
@@ -1062,7 +1718,7 @@ Return To World
                 - métricas de gameplay
 ```
 
-### 1.1.10.1 Heatmaps
+### 1.1.9.1 Heatmaps
 
 #### Mede:
 
@@ -1073,7 +1729,7 @@ Return To World
                     - tráfego problemático
 ```
 
-### 1.1.10.2 Difficulty Metrics
+### 1.1.9.2 Difficulty Metrics
 
 #### Mede:
 
@@ -1084,7 +1740,7 @@ Return To World
                     - dificuldade percebida
 ```
 
-### 1.1.10.3 Crash Analytics
+### 1.1.9.3 Crash Analytics
 
 #### Mede:
 
@@ -1095,7 +1751,7 @@ Return To World
                     - zonas críticas
 ```
 
-### 1.1.10.4 AI Performance
+### 1.1.9.4 AI Performance
 
 #### Mede:
 
@@ -1108,7 +1764,7 @@ Return To World
 
 ---
 
-### 1.1.11 Online
+### 1.1.10 Online
 
 #### Responsável por:
 
@@ -1120,7 +1776,7 @@ Return To World
                 - matchmaking runtime
 ```
 
-### 1.1.11.1 Synchronization
+### 1.1.10.1 Synchronization
 
 #### Responsável por:
 
@@ -1131,7 +1787,7 @@ Return To World
                     - reconciliation
 ```
 
-### 1.1.11.2 Ghost System
+### 1.1.10.2 Ghost System
 
 #### Responsável por:
 
@@ -1141,7 +1797,7 @@ Return To World
                     - records assíncronos
 ```
 
-### 1.1.11.3 Match Runtime
+### 1.1.10.3 Match Runtime
 
 #### Responsável por:
 
@@ -1151,7 +1807,7 @@ Return To World
                     - matchmaking flow
 ```
 
-### 1.1.11.4 Replication
+### 1.1.10.4 Replication
 
 #### Responsável por:
 
