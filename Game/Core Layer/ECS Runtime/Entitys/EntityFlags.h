@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cstdint>
+
 enum EntityFlags : uint32_t
 {
     Entity_Active      = 1 << 0,

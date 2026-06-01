@@ -1,6 +1,6 @@
 #pragma once
 
-#include "EventDelegate.h"
+#include "EventNameID.h"
 
 struct EventListener
 {

@@ -3,8 +3,9 @@
 ```text
 Arquitetura de jogo moderno open-world baseado em:
 - Need for Speed Underground 2
-- Most Wanted
-- Carbon
+- Need for Speed Most Wanted
+- Need for Speed Carbon
+- Need for Speed Pro Street
 - Forza Horizon
 ```
 

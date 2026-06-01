@@ -1,89 +1,77 @@
 #include "EventBus.h"
-
+ 
+#include <algorithm>
+ 
 void EventBus::Subscribe(
-    const std::string& EventName,
+    EventNameID          NameID,
     const EventListener& Listener
 )
 {
-    Listeners[EventName].push_back(
-        Listener
-    );
+    Listeners[NameID].push_back(Listener);
 }
-
+ 
 void EventBus::Unsubscribe(
-    const std::string& EventName,
-    uint64_t ListenerID
+    EventNameID NameID,
+    uint64_t    ListenerID
 )
 {
-    auto& ListenerArray =
-        Listeners[EventName];
-
-    ListenerArray.erase(
+    auto It = Listeners.find(NameID);
+ 
+    if (It == Listeners.end())
+        return;
+ 
+    auto& Array = It->second;
+ 
+    Array.erase(
         std::remove_if(
-            ListenerArray.begin(),
-            ListenerArray.end(),
-            [&](const EventListener& Listener)
+            Array.begin(),
+            Array.end(),
+            [ListenerID](const EventListener& L)
             {
-                return Listener.ListenerID
-                    == ListenerID;
+                return L.ListenerID == ListenerID;
             }
         ),
-        ListenerArray.end()
+        Array.end()
     );
 }
-
+ 
 void EventBus::Publish(const Event& InEvent)
 {
     switch (InEvent.Priority)
     {
-        case EEventPriority::Critical:
-        {
-            Queue.PushCritical(InEvent);
-            break;
-        }
-
-        case EEventPriority::High:
-        {
-            Queue.PushHigh(InEvent);
-            break;
-        }
-
-        case EEventPriority::Normal:
-        {
-            Queue.PushNormal(InEvent);
-            break;
-        }
-
-        case EEventPriority::Background:
-        {
-            Queue.PushBackground(InEvent);
-            break;
-        }
+        case EEventPriority::Critical:   Queue.PushCritical(InEvent);   break;
+        case EEventPriority::High:       Queue.PushHigh(InEvent);       break;
+        case EEventPriority::Normal:     Queue.PushNormal(InEvent);     break;
+        case EEventPriority::Background: Queue.PushBackground(InEvent); break;
     }
 }
-
+ 
+void EventBus::PublishImmediate(const Event& InEvent)
+{
+    Dispatch(InEvent);
+}
+ 
 void EventBus::ProcessEvents()
 {
-    Event CurrentEvent;
-
-    while (Queue.PopNext(CurrentEvent))
+    Event Current;
+ 
+    while (Queue.PopNext(Current))
     {
-        Dispatch(CurrentEvent);
+        Dispatch(Current);
     }
 }
-
-void EventBus::Dispatch(
-    const Event& InEvent
-)
+ 
+void EventBus::Dispatch(const Event& InEvent)
 {
-    auto It =
-        Listeners.find(InEvent.Name);
-
+    auto It = Listeners.find(InEvent.NameID);
+ 
     if (It == Listeners.end())
         return;
-
-    for (const EventListener& Listener :
-        It->second)
+ 
+    // Cópia local do vetor — protege contra Unsubscribe dentro de um callback
+    const std::vector<EventListener> LocalListeners = It->second;
+ 
+    for (const EventListener& Listener : LocalListeners)
     {
         Listener.Callback(InEvent);
     }

@@ -1,61 +1,87 @@
 #include "ECSWorld.h"
-
+ 
 ECSWorld::ECSWorld()
+    : NextIndex(1)
 {
-    NextEntityID = 1;
 }
-
+ 
 EntityID ECSWorld::CreateEntity()
 {
-    EntityID NewEntity;
-
-    if (!FreeEntities.empty())
+    uint32_t Index;
+ 
+    if (!FreeIndices.empty())
     {
-        NewEntity = FreeEntities.front();
-        FreeEntities.pop();
+        Index = FreeIndices.front();
+        FreeIndices.pop();
     }
     else
     {
-        NewEntity = NextEntityID++;
+        Index = NextIndex++;
     }
-
-    if (NewEntity >= EntityRecords.size())
+ 
+    if (Index >= static_cast<uint32_t>(EntityRecords.size()))
     {
-        EntityRecords.resize(NewEntity + 1);
+        EntityRecords.resize(Index + 1);
     }
-
-    EntityRecord& Record = EntityRecords[NewEntity];
-
-    Record.ID = NewEntity;
+ 
+    EntityRecord& Record = EntityRecords[Index];
+ 
+    // Geração já foi incrementada no Destroy; apenas ativa
+    Record.ID    = MakeEntityID(Index, Record.Generation);
     Record.Flags = Entity_Active;
-
-    return NewEntity;
+ 
+    return Record.ID;
 }
-
-void ECSWorld::DestroyEntity(EntityID Entity)
+ 
+void ECSWorld::DestroyEntity(EntityID Entity, ComponentStorage& Components)
 {
     if (!IsEntityValid(Entity))
         return;
-
-    EntityRecord& Record = EntityRecords[Entity];
-
-    Record.Flags = Entity_PendingKill;
-
-    FreeEntities.push(Entity);
+ 
+    const uint32_t Index   = GetEntityIndex(Entity);
+    EntityRecord&  Record  = EntityRecords[Index];
+ 
+    // Remove todos os componentes dessa entidade
+    Components.RemoveAll(Entity);
+ 
+    // Incrementa geração — IDs antigos com a geração anterior ficam inválidos
+    Record.Generation = (Record.Generation + 1) & 0xFF;
+    Record.Flags      = Entity_PendingKill;
+    Record.ID         = INVALID_ENTITY;
+ 
+    FreeIndices.push(Index);
 }
-
+ 
 bool ECSWorld::IsEntityValid(EntityID Entity) const
 {
-    return Entity != INVALID_ENTITY
-        && Entity < EntityRecords.size()
-        && EntityRecords[Entity].Flags & Entity_Active;
+    if (Entity == INVALID_ENTITY)
+        return false;
+ 
+    const uint32_t Index = GetEntityIndex(Entity);
+ 
+    if (Index >= static_cast<uint32_t>(EntityRecords.size()))
+        return false;
+ 
+    const EntityRecord& Record = EntityRecords[Index];
+ 
+    // Geração deve bater — garante que não é um handle stale
+    return (Record.Flags & Entity_Active)
+        && GetEntityGeneration(Entity) == Record.Generation;
 }
-
+ 
 EntityRecord* ECSWorld::GetRecord(EntityID Entity)
 {
     if (!IsEntityValid(Entity))
         return nullptr;
-
-    return &EntityRecords[Entity];
+ 
+    return &EntityRecords[GetEntityIndex(Entity)];
 }
-
+ 
+const EntityRecord* ECSWorld::GetRecord(EntityID Entity) const
+{
+    if (!IsEntityValid(Entity))
+        return nullptr;
+ 
+    return &EntityRecords[GetEntityIndex(Entity)];
+}
+ 
