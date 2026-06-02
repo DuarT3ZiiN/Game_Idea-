@@ -1,0 +1,12 @@
+#pragma once
+
+class ISerializable
+{
+public:
+
+    virtual ~ISerializable() = default;
+
+    virtual void Serialize() = 0;
+
+    virtual void Deserialize() = 0;
+};
