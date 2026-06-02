@@ -4,7 +4,7 @@
 
 struct JobDependency
 {
-    JobID ParentJob = 0;
-
-    JobID ChildJob = 0;
+     JobID ParentJob = INVALID_JOB;
+    JobID ChildJob  = INVALID_JOB;
+    
 };

@@ -1,7 +1,13 @@
 #pragma once
-
-enum class EStateScope : uint8_t
+ 
+#include <cstdint>
+ 
+// Escopo de uma máquina de estados — diferencia Global (exclusiva)
+// de Local (multi-estado simultâneo).
+ 
+enum class EStateMachineScope : uint8_t
 {
-    Global,
-    Local
+    Global, // Um estado ativo por vez (GlobalStateMachine)
+    Local   // Múltiplos estados simultâneos (LocalStateMachine)
 };
+ 

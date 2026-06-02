@@ -2,11 +2,10 @@
 
 void RuntimeBudgetManager::RegisterBudget(
     const std::string& SystemName,
-    double BudgetMS
+    double             BudgetMS
 )
 {
-    Budgets[SystemName].AllocatedMS =
-        BudgetMS;
+    Budgets[SystemName].AllocatedMS = BudgetMS;
 }
 
 bool RuntimeBudgetManager::CanExecute(
@@ -16,28 +15,54 @@ bool RuntimeBudgetManager::CanExecute(
     auto It = Budgets.find(SystemName);
 
     if (It == Budgets.end())
-        return true;
+        return true; // sistema sem budget registrado sempre pode executar
 
-    return
-        It->second.ConsumedMS
-        <
-        It->second.AllocatedMS;
+    return It->second.ConsumedMS < It->second.AllocatedMS;
+}
+
+bool RuntimeBudgetManager::IsOverBudget(
+    const std::string& SystemName
+) const
+{
+    auto It = Budgets.find(SystemName);
+
+    if (It == Budgets.end())
+        return false;
+
+    return It->second.bOverBudget;
 }
 
 void RuntimeBudgetManager::Consume(
     const std::string& SystemName,
-    double DeltaMS
+    double             DeltaMS
 )
 {
-    Budgets[SystemName]
-        .ConsumedMS += DeltaMS;
+    Budgets[SystemName].ConsumedMS += DeltaMS;
+}
+
+const RuntimeBudget* RuntimeBudgetManager::GetBudget(
+    const std::string& SystemName
+) const
+{
+    auto It = Budgets.find(SystemName);
+
+    if (It == Budgets.end())
+        return nullptr;
+
+    return &It->second;
 }
 
 void RuntimeBudgetManager::ResetFrame()
 {
-    for (auto& Pair : Budgets)
+    for (auto& [Name, Budget] : Budgets)
     {
-        Pair.second.ConsumedMS = 0.0;
+        Budget.bOverBudget = Budget.ConsumedMS > Budget.AllocatedMS;
+
+        if (Budget.bOverBudget)
+            ++Budget.OverFrames;
+        else
+            Budget.OverFrames = 0;
+
+        Budget.ConsumedMS = 0.0;
     }
 }
-
