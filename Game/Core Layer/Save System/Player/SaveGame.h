@@ -7,11 +7,8 @@
 
 struct SaveGame
 {
-    SaveMetadata Metadata;
-
+    SaveMetadata   Metadata;
     PlayerSaveData Player;
-
-    WorldSaveData World;
-
+    WorldSaveData  World;
     GarageSaveData Garage;
 };
