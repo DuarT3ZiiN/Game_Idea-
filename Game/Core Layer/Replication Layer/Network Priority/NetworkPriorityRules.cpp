@@ -1,40 +1,35 @@
 #include "NetworkPriorityRules.h"
 
-ENetworkPriority
-NetworkPriorityRules::Evaluate(
+ENetworkPriority NetworkPriorityRules::Evaluate(
     float Distance,
-    bool Visible,
-    bool IsPlayer
+    bool  bVisible,
+    bool  bIsPlayer
 )
 {
-    if (IsPlayer)
-    {
-        return
-            ENetworkPriority::
-            Critical;
-    }
+    if (bIsPlayer)
+        return ENetworkPriority::Critical;
 
-    if (
-        Visible &&
-        Distance < 150.0f
-    )
-    {
-        return
-            ENetworkPriority::
-            High;
-    }
+    if (bVisible && Distance < 150.f)
+        return ENetworkPriority::High;
 
-    if (
-        Distance < 400.0f
-    )
-    {
-        return
-            ENetworkPriority::
-            Normal;
-    }
+    if (Distance < 400.f)
+        return ENetworkPriority::Normal;
 
-    return
-        ENetworkPriority::
-        Low;
+    return ENetworkPriority::Low;
 }
 
+ENetworkPriority NetworkPriorityRules::EvaluateEntity(
+    const ReplicatedEntity& Entity,
+    float                   DistanceToLocalPlayer
+)
+{
+    // Entidade marcada como player → sempre Critical
+    if (Entity.bIsPlayer)
+        return ENetworkPriority::Critical;
+
+    // Respeita prioridade manual se foi configurada explicitamente
+    if (Entity.Priority == ENetworkPriority::Critical)
+        return ENetworkPriority::Critical;
+
+    return Evaluate(DistanceToLocalPlayer, true, false);
+}

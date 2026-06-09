@@ -2,29 +2,19 @@
 
 #include <vector>
 
-struct NetworkTransform
-{
-    float PositionX;
-    float PositionY;
-    float PositionZ;
-
-    float RotationX;
-    float RotationY;
-    float RotationZ;
-    float RotationW;
-};
+#include "NetworkTypes.h"
+#include "NetworkTransform.h"
+#include "Entity.h"
 
 struct ReplicationSnapshot
 {
-    TickID Tick;
-
-    EntityID Entity;
+    TickID           Tick      = INVALID_TICK;
+    EntityID         Entity    = INVALID_ENTITY;
 
     NetworkTransform Transform;
 
-    float Velocity;
-
-    float Steering;
-
-    float Throttle;
+    float Velocity  = 0.f;
+    float Steering  = 0.f;
+    float Throttle  = 0.f;
+    float Speed     = 0.f;
 };

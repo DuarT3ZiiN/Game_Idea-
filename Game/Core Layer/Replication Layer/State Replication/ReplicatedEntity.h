@@ -1,15 +1,16 @@
 #pragma once
 
 #include "Entity.h"
+#include "NetworkTypes.h"
+#include "ReplicationPriority.h"
 
 struct ReplicatedEntity
 {
-    EntityID Entity;
+    EntityID         Entity   = INVALID_ENTITY;
+    NetworkID        Owner    = INVALID_NETWORK_ID;
 
-    NetworkID Owner;
+    ENetworkPriority Priority = ENetworkPriority::Normal;
 
-    ENetworkPriority Priority =
-        ENetworkPriority::Normal;
-
-    bool bReplicate = true;
+    bool bReplicate  = true;
+    bool bIsPlayer   = false; // players sempre Critical
 };

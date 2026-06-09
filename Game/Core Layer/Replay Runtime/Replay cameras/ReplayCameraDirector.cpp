@@ -1,46 +1,32 @@
-#include "ReplayCameraDirector.h"
+#pragma once
 
-void ReplayCameraDirector::UpdateCamera(
-    float VehicleSpeed,
-    bool CrashDetected,
-    bool NearMiss
-)
+#include "ReplayCamera.h"
+#include "VehicleStateSnapshot.h"
+
+// ReplayCameraDirector decide automaticamente o melhor modo de câmera
+// baseado no estado do veículo no frame atual.
+//
+// Melhorias em relação à versão anterior:
+//   - UpdateCamera recebe VehicleStateSnapshot em vez de floats soltos —
+//     agora pode reagir a DriftAngle, NitroAmount, Gear, etc.
+//   - Mantém referência à ReplayCamera que controla
+//   - Thresholds como constantes nomeadas para fácil tuning
+
+class ReplayCameraDirector
 {
-    if (CrashDetected)
-    {
-        CurrentMode =
-            EReplayCameraMode::TV;
+public:
 
-        return;
-    }
+    void SetCamera(ReplayCamera* InCamera);
 
-    if (VehicleSpeed > 250.0f)
-    {
-        CurrentMode =
-            EReplayCameraMode::
-            Helicopter;
+    void UpdateCamera(const VehicleStateSnapshot& State);
 
-        return;
-    }
+    EReplayCameraMode GetCurrentMode() const;
 
-    if (NearMiss)
-    {
-        CurrentMode =
-            EReplayCameraMode::
-            Cinematic;
+private:
 
-        return;
-    }
+    static constexpr float HELICOPTER_SPEED_THRESHOLD = 250.f;
+    static constexpr float DRIFT_ANGLE_THRESHOLD      = 20.f;
 
-    CurrentMode =
-        EReplayCameraMode::
-        Chase;
-}
-
-EReplayCameraMode
-ReplayCameraDirector::
-GetCurrentMode() const
-{
-    return CurrentMode;
-}
-
+    ReplayCamera*     Camera      = nullptr;
+    EReplayCameraMode CurrentMode = EReplayCameraMode::Chase;
+};

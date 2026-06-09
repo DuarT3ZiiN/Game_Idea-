@@ -1,16 +1,19 @@
 #pragma once
 
+#include <cstdint>
+
+#include "NetworkTypes.h"
+
 struct InputCommand
 {
-    TickID Tick;
+    TickID Tick      = INVALID_TICK;
 
-    float Steering;
+    float  Steering  = 0.f;
+    float  Throttle  = 0.f;
+    float  Brake     = 0.f;
 
-    float Throttle;
+    bool   bHandbrake = false;
+    bool   bNitro     = false;
 
-    float Brake;
-
-    bool Handbrake;
-
-    bool Nitro;
+    int8_t Gear      = 1;
 };

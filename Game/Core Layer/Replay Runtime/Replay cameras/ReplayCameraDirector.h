@@ -1,22 +1,47 @@
+#include "ReplayCameraDirector.h"
 
-#pragma once
-
-class ReplayCameraDirector
+void ReplayCameraDirector::SetCamera(ReplayCamera* InCamera)
 {
-public:
+    Camera = InCamera;
+}
 
-    void UpdateCamera(
-        float VehicleSpeed,
-        bool CrashDetected,
-        bool NearMiss
-    );
+void ReplayCameraDirector::UpdateCamera(
+    const VehicleStateSnapshot& State
+)
+{
+    // Crash detectado via Damage alto → câmera TV (cobertura dramática)
+    if (State.Damage > 0.8f)
+    {
+        CurrentMode = EReplayCameraMode::TV;
+    }
+    // Alta velocidade → helicoptero
+    else if (State.Speed > HELICOPTER_SPEED_THRESHOLD)
+    {
+        CurrentMode = EReplayCameraMode::Helicopter;
+    }
+    // Drift ativo → câmera cinematográfica lateral
+    else if (State.DriftAngle > DRIFT_ANGLE_THRESHOLD)
+    {
+        CurrentMode = EReplayCameraMode::Cinematic;
+    }
+    // Nitro ativo → câmera capô para sensação de velocidade
+    else if (State.NitroAmount > 0.f && State.NitroAmount < 100.f)
+    {
+        CurrentMode = EReplayCameraMode::Hood;
+    }
+    else
+    {
+        CurrentMode = EReplayCameraMode::Chase;
+    }
 
-    EReplayCameraMode
-    GetCurrentMode() const;
+    if (Camera)
+    {
+        Camera->SetMode(CurrentMode);
+        Camera->Update(State);
+    }
+}
 
-private:
-
-    EReplayCameraMode CurrentMode =
-        EReplayCameraMode::Chase;
-};
-
+EReplayCameraMode ReplayCameraDirector::GetCurrentMode() const
+{
+    return CurrentMode;
+}

@@ -7,6 +7,7 @@ enum class EReplayState : uint8_t
     Recording,
     Playback,
     Paused,
+    Scrubbing,
     Finished
 };
 

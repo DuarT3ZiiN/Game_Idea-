@@ -1,12 +1,23 @@
 #include "NetworkTickManager.h"
 
-void NetworkTickManager::Tick()
+NetworkTickManager::NetworkTickManager(uint32_t InTickRate)
+    : TickRate(InTickRate)
 {
-    CurrentTick++;
 }
 
-TickID
-NetworkTickManager::GetCurrentTick() const
+uint32_t NetworkTickManager::Tick(double DeltaTime)
 {
-    return CurrentTick;
+    TimeAccumulator += DeltaTime;
+
+    const double Interval   = GetTickIntervalSeconds();
+    uint32_t     TicksFired = 0;
+
+    while (TimeAccumulator >= Interval)
+    {
+        TimeAccumulator -= Interval;
+        ++CurrentTick;
+        ++TicksFired;
+    }
+
+    return TicksFired;
 }
