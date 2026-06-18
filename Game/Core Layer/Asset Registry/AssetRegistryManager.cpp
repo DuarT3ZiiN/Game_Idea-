@@ -1,23 +1,60 @@
-#include "AssetRegistryManager.h"
+#include "AssetDataBaseQuery.h"
 
-void AssetRegistryManager::Initialize()
+void AssetQuery::Initialize(
+    const VehicleRegistry* InVehicles,
+    const WorldRegistry*   InWorld,
+    const AudioRegistry*   InAudio
+)
 {
+    Vehicles = InVehicles;
+    World    = InWorld;
+    Audio    = InAudio;
 }
 
-VehicleRegistry&
-AssetRegistryManager::Vehicles()
+std::vector<AssetID> AssetQuery::FindVehiclesByBrand(
+    const std::string& Brand
+) const
 {
-    return VehicleAssets;
+    if (!Vehicles)
+        return {};
+
+    return Vehicles->FindByManufacturer(Brand);
 }
 
-WorldRegistry&
-AssetRegistryManager::World()
+std::vector<AssetID> AssetQuery::FindDistrictAssets(
+    uint32_t DistrictID
+) const
 {
-    return WorldAssets;
+    if (!World)
+        return {};
+
+    return World->FindByDistrict(DistrictID);
 }
 
-AudioRegistry&
-AssetRegistryManager::Audio()
+std::vector<AssetID> AssetQuery::FindEngineSounds(
+    AssetID VehicleID
+) const
 {
-    return AudioAssets;
+    if (!Audio)
+        return {};
+
+    // Retorna apenas sons de engine e exhaust do veículo
+    std::vector<AssetID> All = Audio->FindByVehicle(VehicleID);
+    std::vector<AssetID> Result;
+
+    for (AssetID ID : All)
+    {
+        const AudioAsset* Asset = Audio->FindAudioAsset(ID);
+        if (!Asset)
+            continue;
+
+        if (Asset->Type == EAudioAssetType::Engine
+         || Asset->Type == EAudioAssetType::Exhaust
+         || Asset->Type == EAudioAssetType::Turbo)
+        {
+            Result.push_back(ID);
+        }
+    }
+
+    return Result;
 }
