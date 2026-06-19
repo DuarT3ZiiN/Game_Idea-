@@ -8,13 +8,8 @@
 struct AssetReference
 {
     AssetHandle Handle;
-
-    EAssetType Type =
-        EAssetType::Unknown;
-
+    EAssetType  Type        = EAssetType::Unknown;
     std::string Path;
-
-    bool bStreamable = false;
-
-    bool bPreload = false;
+    bool        bStreamable = false;
+    bool        bPreload    = false;
 };
